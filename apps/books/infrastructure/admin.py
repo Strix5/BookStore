@@ -9,8 +9,9 @@ from apps.books.infrastructure.models import Book, BookCategory
 @admin.register(Book)
 class BookAdmin(TranslatableAdmin):
     list_display = (
-        "name", "author", "category",
-        "is_active", "image_preview"
+        "name",
+        "is_active",
+        "image_preview"
     )
     list_editable = ("is_active",)
     list_filter = ("created_at",)

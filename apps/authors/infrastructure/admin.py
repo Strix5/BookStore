@@ -11,7 +11,7 @@ class AuthorAdmin(TranslatableAdmin):
     list_display = ("name", "is_active", "image_preview")
     list_editable = ("is_active",)
     list_per_page = 20
-    readonly_fields = ("created_at", "updated_at")
+    readonly_fields = ("created_at", "updated_at", "image_preview")
 
     fieldsets = (
         (_("Main"), {"fields": ("name", "is_active")}),

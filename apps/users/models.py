@@ -1,3 +1,4 @@
-from django.db import models
+from apps.users.infrastructure.models import CustomUser, Profile
 
-# Create your models here.
+
+__all__ = ("CustomUser", "Profile")
