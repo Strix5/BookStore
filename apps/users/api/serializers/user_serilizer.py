@@ -9,41 +9,22 @@ User = get_user_model()
 
 
 class UserUpdateSerializer(serializers.ModelSerializer):
-    """
-    Отдельный сериализатор для обновления пользователя.
-
-    Принцип разделения интерфейсов (ISP):
-    - При создании требуется пароль
-    - При обновлении пароль не нужен
-    - Два отдельных сериализатора вместо одного с условной логикой
-    """
-
     class Meta:
         model = User
         fields = ["id", "email", "nickname", "first_name", "last_name", "age"]
         read_only_fields = ("id", "email")  # Email нельзя изменить
 
     def update(self, instance, validated_data):
-        """Обновление через сервисный слой."""
         return UserService.update_user(user=instance, **validated_data)
 
 
 class RegisterSerializer(serializers.ModelSerializer):
-    """
-    Сериализатор для регистрации нового пользователя.
-
-    Clean Code принципы:
-    - Валидация данных на уровне полей
-    - Делегирование создания в сервисный слой
-    - Нет прямой отправки email - это делает сервис
-    """
-
     profile = ProfileSerializer(required=False, write_only=True)
     password = serializers.CharField(
         write_only=True,
         min_length=8,
         style={"input_type": "password"},
-        help_text="Минимум 8 символов"
+        help_text="Min 8 symbols"
     )
 
     class Meta:
@@ -68,13 +49,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         }
 
     def validate_password(self, value: str) -> str:
-        """
-        Валидация пароля.
-
-        Можно добавить дополнительные правила:
-        - Наличие цифр, спецсимволов
-        - Проверка на распространенные пароли
-        """
         if len(value) < 8:
             raise serializers.ValidationError(
                 "Min 8 symbols."
@@ -93,10 +67,8 @@ class RegisterSerializer(serializers.ModelSerializer):
         request = self.context.get("request")
         profile_data = validated_data.pop("profile", None)
 
-        # Определяем домен для ссылки верификации
         domain, scheme = self._get_domain_and_scheme(request)
 
-        # Делегируем всю логику создания в сервис
         user = UserRegistrationService.register_user(
             email=validated_data["email"],
             nickname=validated_data["nickname"],

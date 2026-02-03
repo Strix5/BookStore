@@ -56,7 +56,6 @@ class UserRegistrationService:
             ValueError: Если обязательные поля не заполнены
             IntegrityError: Если email или nickname уже существуют
         """
-        # Создаем пользователя через менеджер (уже есть валидация)
         user = User.objects.create(
             email=email,
             nickname=nickname,

@@ -74,11 +74,6 @@ class VerifyEmailView(APIView):
 
     @staticmethod
     def _is_token_valid(user: User, token: str) -> bool:
-        """
-        Проверяет валидность токена верификации.
-
-        Выделено в отдельный метод для явности проверки.
-        """
         return email_verification_token.check_token(user, token)
 
     def _success_response(self) -> Response:
@@ -97,28 +92,11 @@ class VerifyEmailView(APIView):
 
 
 class RegisterView(generics.CreateAPIView):
-    """
-    Регистрация нового пользователя.
-
-    Создаёт пользователя (is_active=False) и отправляет email
-    с ссылкой подтверждения.
-
-    Принцип: view только обрабатывает HTTP запрос,
-    вся логика создания в сериализаторе и сервисах.
-    """
-
     serializer_class = RegisterSerializer
 
-    # Константа для сообщения - единое место изменения
     SUCCESS_MESSAGE = "Письмо с подтверждением отправлено на вашу почту."
 
     def create(self, request: Request, *args, **kwargs) -> Response:
-        """
-        Создает нового пользователя.
-
-        Переопределено для кастомизации ответа.
-        Логика создания делегируется в serializer и services.
-        """
         serializer = self.get_serializer(
             data=request.data,
             context={"request": request}
@@ -133,26 +111,11 @@ class RegisterView(generics.CreateAPIView):
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    """
-    ViewSet для управления пользователями.
-
-    Предоставляет CRUD операции для пользователей.
-    Доступ: только аутентифицированные пользователи,
-    изменение - только владелец или администратор.
-    """
-
     queryset = User.objects.select_related("profile")
     permission_classes = [IsAuthenticated, IsOwnerOrAdmin]
     lookup_field = "nickname"
 
     def get_serializer_class(self):
-        """
-        Возвращает подходящий сериализатор в зависимости от действия.
-
-        Принцип разделения интерфейсов:
-        - Создание требует пароль -> RegisterSerializer
-        - Обновление не требует пароль -> UserUpdateSerializer
-        """
         if self.action == "create":
             return RegisterSerializer
         return UserUpdateSerializer
