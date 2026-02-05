@@ -12,7 +12,7 @@ class UserUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ["id", "email", "nickname", "first_name", "last_name", "age"]
-        read_only_fields = ("id", "email")  # Email нельзя изменить
+        read_only_fields = ("id", "email")
 
     def update(self, instance, validated_data):
         return UserService.update_user(user=instance, **validated_data)
@@ -22,7 +22,6 @@ class RegisterSerializer(serializers.ModelSerializer):
     profile = ProfileSerializer(required=False, write_only=True)
     password = serializers.CharField(
         write_only=True,
-        min_length=8,
         style={"input_type": "password"},
         help_text="Min 8 symbols"
     )
@@ -93,7 +92,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         """
         profile_data = validated_data.pop("profile", serializers.empty)
 
-        # Обновляем данные пользователя
         user = UserService.update_user(
             user=instance,
             first_name=validated_data.get("first_name"),
@@ -102,7 +100,6 @@ class RegisterSerializer(serializers.ModelSerializer):
             age=validated_data.get("age")
         )
 
-        # Управляем профилем согласно переданным данным
         self._handle_profile_update(user, profile_data)
 
         return user
@@ -137,13 +134,6 @@ class RegisterSerializer(serializers.ModelSerializer):
     @staticmethod
     def _get_domain_and_scheme(request) -> tuple[str, str]:
         """
-        Извлекает домен и схему из request или настроек.
-
-        Выделено в отдельный метод для:
-        - Улучшения читаемости
-        - Упрощения тестирования
-        - Соблюдения принципа единственной ответственности
-
         Returns:
             Tuple (domain, scheme)
         """

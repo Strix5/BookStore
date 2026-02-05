@@ -15,6 +15,10 @@ class Author(TranslatableModel, AbstractDateTimeModel):
         blank=True,
         null=True
     )
+    slug = models.SlugField(
+        max_length=255,
+        unique=True,
+    )
     is_active = models.BooleanField(default=True)
 
     class Meta:

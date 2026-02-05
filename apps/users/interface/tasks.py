@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 
-from apps.users.infrastructure.tokens import email_verification_token
+from apps.users.interface.tokens import email_verification_token
 
 
 User = get_user_model()

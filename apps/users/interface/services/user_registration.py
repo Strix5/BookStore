@@ -3,7 +3,7 @@ from django.db import transaction
 from django.contrib.auth import get_user_model
 
 from apps.users.interface.services.profile import ProfileService
-from apps.users.infrastructure.tasks import send_verification_email_task
+from apps.users.interface.tasks import send_verification_email_task
 
 
 User = get_user_model()

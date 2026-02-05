@@ -9,13 +9,13 @@ class BookListSerializer(serializers.ModelSerializer):
         many=True,
         read_only=True,
         source="author",
-        slug_field="slug"
+        slug_field="name"
     )
     categories = serializers.SlugRelatedField(
         many=True,
         read_only=True,
         source="category",
-        slug_field="slug"
+        slug_field="name"
     )
     created_at_display = serializers.SerializerMethodField()
 
@@ -44,13 +44,13 @@ class BookDetailSerializer(serializers.ModelSerializer):
         many=True,
         read_only=True,
         source="author",
-        slug_field="slug"
+        slug_field="name"
     )
     categories = serializers.SlugRelatedField(
         many=True,
         read_only=True,
         source="category",
-        slug_field="slug"
+        slug_field="name"
     )
     created_at_display = serializers.SerializerMethodField()
 

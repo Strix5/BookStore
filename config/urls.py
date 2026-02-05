@@ -2,7 +2,7 @@
 URL configuration for config project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.2/topics/http/urls/
+    https://docs.djangoproject.com/en/6.0/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -27,8 +27,9 @@ from drf_spectacular.views import (
 
 urlpatterns = [
     path("admin-panel/", admin.site.urls),
-    path("api/", include("apps.books.api.urls")),
-    path("api/", include("apps.users.api.urls")),
+    path("api/books/", include("apps.books.api.urls")),
+    path("api/users/", include("apps.users.api.urls")),
+    path("api/company/", include("apps.company.api.urls")),
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
     path(
         "api/docs/swagger/",

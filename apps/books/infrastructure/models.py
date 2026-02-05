@@ -33,7 +33,7 @@ class BookCategory(TranslatableModel, AbstractDateTimeModel):
 
 class Book(TranslatableModel, AbstractDateTimeModel):
     translations = TranslatedFields(
-        name=models.CharField(max_length=255),
+        name=models.CharField(max_length=255, db_index=True),
         description=RichTextField(blank=True, null=True)
     )
     category = models.ManyToManyField(

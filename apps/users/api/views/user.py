@@ -13,7 +13,7 @@ from apps.users.api.serializers import (
     UserUpdateSerializer,
 )
 from apps.users.interface.services import UserService
-from apps.users.infrastructure.tokens import email_verification_token
+from apps.users.interface.tokens import email_verification_token
 
 
 User = get_user_model()

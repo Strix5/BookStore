@@ -1,19 +1,17 @@
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 
-from apps.books.infrastructure.models import Book, BookCategory
+from apps.authors.infrastructure.models import Author
 from commons.services.slug_generation import generate_slug
 from commons.signals.media import connect_media_cleanup
 
 
-@receiver(pre_save, sender=BookCategory)
-@receiver(pre_save, sender=Book)
-def book_slug_signal(sender, instance, **kwargs):
+@receiver(pre_save, sender=Author)
+def author_slug_signal(sender, instance, **kwargs):
     generate_slug(instance, sender, "name")
 
 
 for obj in [
-    Book,
-    BookCategory
+    Author
 ]:
     connect_media_cleanup(obj)

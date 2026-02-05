@@ -30,6 +30,8 @@ SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
+BACKEND_DOMAIN = env("BACKEND_DOMAIN")
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -52,7 +54,8 @@ INSTALLED_APPS = [
     # project
     "apps.books",
     "apps.users",
-    "apps.authors"
+    "apps.authors",
+    "apps.company"
 ]
 
 MIDDLEWARE = [
@@ -60,6 +63,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "config.middleware.BlockAPIRouteMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.common.CommonMiddleware',
     "django.middleware.locale.LocaleMiddleware",
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -130,7 +134,7 @@ REST_FRAMEWORK = {
 
 # Unused
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,

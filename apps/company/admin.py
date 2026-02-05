@@ -1,0 +1,1 @@
+from apps.company.infrastructure.admin import CompanyAdmin, AboutCompanyAdmin, ContactDetailAdmin, SocialMediaAdmin

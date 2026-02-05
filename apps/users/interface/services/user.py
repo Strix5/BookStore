@@ -6,13 +6,6 @@ User = get_user_model()
 
 
 class UserService:
-    """
-    Сервис для управления пользователями.
-
-    Содержит бизнес-логику работы с пользовательскими данными,
-    которая не связана напрямую с регистрацией или профилями.
-    """
-
     @staticmethod
     @transaction.atomic
     def update_user(user: User, **user_data) -> User:
