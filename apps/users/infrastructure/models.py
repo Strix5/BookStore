@@ -1,8 +1,5 @@
 from django.conf import settings
-from django.contrib.auth.models import (
-    AbstractBaseUser,
-    PermissionsMixin,
-)
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -19,7 +16,10 @@ class Profile(models.Model):
     )
     biography = models.TextField(blank=True)
     avatar = models.ImageField(
-        upload_to="profile/%y/%m/%d/", max_length=255, blank=True, null=True
+        upload_to="profile/%y/%m/%d/",
+        max_length=255,
+        blank=True,
+        null=True
     )
 
     class Meta:

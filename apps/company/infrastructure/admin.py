@@ -3,7 +3,8 @@ from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 from parler.admin import TranslatableAdmin
 
-from apps.company.infrastructure.models import AboutCompany, Company, ContactDetail, SocialMedia
+from apps.company.infrastructure.models import (AboutCompany, Company,
+                                                ContactDetail, SocialMedia)
 
 
 @admin.register(Company)
@@ -24,7 +25,7 @@ class AboutCompanyAdmin(TranslatableAdmin):
 
     fieldsets = (
         (_("Main"), {"fields": ("title", "content")}),
-        (_("Image"), {"fields": ("image", "image_preview")})
+        (_("Image"), {"fields": ("image", "image_preview")}),
     )
 
     def image_preview(self, obj):

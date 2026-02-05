@@ -7,14 +7,10 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from apps.users.api.serializers import RegisterSerializer, UserUpdateSerializer
 from apps.users.infrastructure.permissions import IsOwnerOrAdmin
-from apps.users.api.serializers import (
-    RegisterSerializer,
-    UserUpdateSerializer,
-)
 from apps.users.interface.services import UserService
 from apps.users.interface.tokens import email_verification_token
-
 
 User = get_user_model()
 
@@ -78,16 +74,12 @@ class VerifyEmailView(APIView):
 
     def _success_response(self) -> Response:
         """Формирует успешный ответ."""
-        return Response(
-            {"detail": self.SUCCESS_MESSAGE},
-            status=status.HTTP_200_OK
-        )
+        return Response({"detail": self.SUCCESS_MESSAGE}, status=status.HTTP_200_OK)
 
     def _error_response(self) -> Response:
         """Формирует ответ с ошибкой."""
         return Response(
-            {"detail": self.ERROR_MESSAGE},
-            status=status.HTTP_400_BAD_REQUEST
+            {"detail": self.ERROR_MESSAGE}, status=status.HTTP_400_BAD_REQUEST
         )
 
 
@@ -98,15 +90,13 @@ class RegisterView(generics.CreateAPIView):
 
     def create(self, request: Request, *args, **kwargs) -> Response:
         serializer = self.get_serializer(
-            data=request.data,
-            context={"request": request}
+            data=request.data, context={"request": request}
         )
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
         return Response(
-            {"detail": self.SUCCESS_MESSAGE},
-            status=status.HTTP_201_CREATED
+            {"detail": self.SUCCESS_MESSAGE}, status=status.HTTP_201_CREATED
         )
 
 

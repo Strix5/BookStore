@@ -1,4 +1,5 @@
 from rest_framework import serializers
+
 from apps.books.infrastructure.models import Book, BookCategory
 
 
@@ -22,10 +23,17 @@ class BookListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = (
-            "id", "name", "description",
-            "file", "image", "slug",
-            "is_adult", "authors", "categories",
-            "created_at", "created_at_display"
+            "id",
+            "name",
+            "description",
+            "file",
+            "image",
+            "slug",
+            "is_adult",
+            "authors",
+            "categories",
+            "created_at",
+            "created_at_display",
         )
 
     def get_created_at_display(self, obj):
@@ -57,10 +65,17 @@ class BookDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = (
-            "id", "name", "description",
-            "file", "image", "slug",
-            "is_adult", "authors", "categories",
-            "created_at", "created_at_display"
+            "id",
+            "name",
+            "description",
+            "file",
+            "image",
+            "slug",
+            "is_adult",
+            "authors",
+            "categories",
+            "created_at",
+            "created_at_display",
         )
 
     def get_created_at_display(self, obj):

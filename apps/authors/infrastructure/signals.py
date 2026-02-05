@@ -11,7 +11,5 @@ def author_slug_signal(sender, instance, **kwargs):
     generate_slug(instance, sender, "name")
 
 
-for obj in [
-    Author
-]:
+for obj in [Author]:
     connect_media_cleanup(obj)

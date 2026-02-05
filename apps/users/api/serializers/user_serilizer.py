@@ -2,8 +2,9 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 from apps.users.api.serializers.profile_serializer import ProfileSerializer
-from apps.users.interface.services import UserRegistrationService, ProfileService, UserService
-
+from apps.users.interface.services import (ProfileService,
+                                           UserRegistrationService,
+                                           UserService)
 
 User = get_user_model()
 
@@ -21,9 +22,7 @@ class UserUpdateSerializer(serializers.ModelSerializer):
 class RegisterSerializer(serializers.ModelSerializer):
     profile = ProfileSerializer(required=False, write_only=True)
     password = serializers.CharField(
-        write_only=True,
-        style={"input_type": "password"},
-        help_text="Min 8 symbols"
+        write_only=True, style={"input_type": "password"}, help_text="Min 8 symbols"
     )
 
     class Meta:
@@ -44,14 +43,12 @@ class RegisterSerializer(serializers.ModelSerializer):
             "nickname": {"required": True},
             "first_name": {"required": True},
             "last_name": {"required": True},
-            "age": {"required": True}
+            "age": {"required": True},
         }
 
     def validate_password(self, value: str) -> str:
         if len(value) < 8:
-            raise serializers.ValidationError(
-                "Min 8 symbols."
-            )
+            raise serializers.ValidationError("Min 8 symbols.")
         return value
 
     def create(self, validated_data):
@@ -77,7 +74,7 @@ class RegisterSerializer(serializers.ModelSerializer):
             age=validated_data["age"],
             profile_data=profile_data,
             domain=domain,
-            scheme=scheme
+            scheme=scheme,
         )
 
         return user
@@ -97,7 +94,7 @@ class RegisterSerializer(serializers.ModelSerializer):
             first_name=validated_data.get("first_name"),
             last_name=validated_data.get("last_name"),
             nickname=validated_data.get("nickname"),
-            age=validated_data.get("age")
+            age=validated_data.get("age"),
         )
 
         self._handle_profile_update(user, profile_data)
@@ -142,6 +139,7 @@ class RegisterSerializer(serializers.ModelSerializer):
             scheme = "https" if request.is_secure() else "http"
         else:
             from django.conf import settings
+
             domain = getattr(settings, "BACKEND_DOMAIN", "localhost:8000")
             scheme = "http"
 

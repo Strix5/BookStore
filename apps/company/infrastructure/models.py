@@ -1,6 +1,6 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from ckeditor.fields import RichTextField
 from parler.models import TranslatableModel, TranslatedFields
 
 
@@ -73,10 +73,7 @@ class ContactDetail(models.Model):
     )
     phone = models.CharField(max_length=50)
     email = models.EmailField(max_length=255)
-    social_media = models.ManyToManyField(
-        to=SocialMedia,
-        blank=True
-    )
+    social_media = models.ManyToManyField(to=SocialMedia, blank=True)
 
     class Meta:
         verbose_name = _("Company Contact Detail")

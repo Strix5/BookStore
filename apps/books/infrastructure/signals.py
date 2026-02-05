@@ -12,8 +12,5 @@ def book_slug_signal(sender, instance, **kwargs):
     generate_slug(instance, sender, "name")
 
 
-for obj in [
-    Book,
-    BookCategory
-]:
+for obj in [Book, BookCategory]:
     connect_media_cleanup(obj)

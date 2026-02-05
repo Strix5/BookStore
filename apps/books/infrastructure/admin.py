@@ -8,11 +8,7 @@ from apps.books.infrastructure.models import Book, BookCategory
 
 @admin.register(Book)
 class BookAdmin(TranslatableAdmin):
-    list_display = (
-        "name",
-        "is_active",
-        "image_preview"
-    )
+    list_display = ("name", "is_active", "image_preview")
     list_editable = ("is_active",)
     list_filter = ("created_at",)
     list_per_page = 20
@@ -22,7 +18,19 @@ class BookAdmin(TranslatableAdmin):
     ordering = ("-created_at",)
 
     fieldsets = (
-        (_("Main"), {"fields": ("name", "description", "category", "author", "is_active", "is_adult")}),
+        (
+            _("Main"),
+            {
+                "fields": (
+                    "name",
+                    "description",
+                    "category",
+                    "author",
+                    "is_active",
+                    "is_adult",
+                )
+            },
+        ),
         (_("Image"), {"fields": ("file", "image", "image_preview")}),
         (_("Metadata"), {"fields": ("slug", "created_at", "updated_at")}),
     )

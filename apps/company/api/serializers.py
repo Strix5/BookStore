@@ -1,11 +1,7 @@
 from rest_framework import serializers
 
-from apps.company.infrastructure.models import (
-    Company,
-    AboutCompany,
-    SocialMedia,
-    ContactDetail
-)
+from apps.company.infrastructure.models import (AboutCompany, Company,
+                                                ContactDetail, SocialMedia)
 
 
 class CompanySerializer(serializers.ModelSerializer):

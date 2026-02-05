@@ -1,16 +1,11 @@
 from rest_framework.exceptions import NotFound
 from rest_framework.generics import RetrieveAPIView
 
-from apps.company.infrastructure.models import (
-    Company,
-    AboutCompany,
-    ContactDetail
-)
-from apps.company.api.serializers import (
-    CompanySerializer,
-    AboutCompanySerializer,
-    ContactDetailSerializer
-)
+from apps.company.api.serializers import (AboutCompanySerializer,
+                                          CompanySerializer,
+                                          ContactDetailSerializer)
+from apps.company.infrastructure.models import (AboutCompany, Company,
+                                                ContactDetail)
 
 
 class CompanyAPIView(RetrieveAPIView):
@@ -41,4 +36,3 @@ class ContactDetailAPIView(RetrieveAPIView):
         if not obj:
             raise NotFound("Company Contact Detail object doesn't exist")
         return obj
-

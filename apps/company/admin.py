@@ -1,1 +1,3 @@
-from apps.company.infrastructure.admin import CompanyAdmin, AboutCompanyAdmin, ContactDetailAdmin, SocialMediaAdmin
+from apps.company.infrastructure.admin import (AboutCompanyAdmin, CompanyAdmin,
+                                               ContactDetailAdmin,
+                                               SocialMediaAdmin)

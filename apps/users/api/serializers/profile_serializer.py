@@ -4,7 +4,6 @@ from rest_framework import serializers
 from apps.users.infrastructure.models import Profile
 from apps.users.interface.services import ProfileService
 
-
 User = get_user_model()
 
 
@@ -44,7 +43,4 @@ class ProfileSerializer(serializers.ModelSerializer):
         Делегируем логику обновления сервису для централизации
         бизнес-правил и возможности повторного использования.
         """
-        return ProfileService.update_profile(
-            profile=instance,
-            **validated_data
-        )
+        return ProfileService.update_profile(profile=instance, **validated_data)

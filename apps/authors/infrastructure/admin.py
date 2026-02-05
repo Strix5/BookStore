@@ -16,7 +16,7 @@ class AuthorAdmin(TranslatableAdmin):
     fieldsets = (
         (_("Main"), {"fields": ("name", "is_active")}),
         (_("Image"), {"fields": ("image", "image_preview")}),
-        (_("Meta"), {"fields": ("slug", "created_at", "updated_at")})
+        (_("Meta"), {"fields": ("slug", "created_at", "updated_at")}),
     )
 
     def image_preview(self, obj):

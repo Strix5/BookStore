@@ -1,10 +1,10 @@
 from typing import Optional
-from django.db import transaction
+
 from django.contrib.auth import get_user_model
+from django.db import transaction
 
 from apps.users.interface.services.profile import ProfileService
 from apps.users.interface.tasks import send_verification_email_task
-
 
 User = get_user_model()
 
@@ -24,16 +24,16 @@ class UserRegistrationService:
     @staticmethod
     @transaction.atomic
     def register_user(
-            *,
-            email: str,
-            nickname: str,
-            first_name: str,
-            last_name: str,
-            password: str,
-            age: int,
-            profile_data: Optional[dict] = None,
-            domain: str,
-            scheme: str = "https"
+        *,
+        email: str,
+        nickname: str,
+        first_name: str,
+        last_name: str,
+        password: str,
+        age: int,
+        profile_data: Optional[dict] = None,
+        domain: str,
+        scheme: str = "https"
     ) -> User:
         """
         Регистрирует нового пользователя в системе.
@@ -72,9 +72,7 @@ class UserRegistrationService:
 
         transaction.on_commit(
             lambda: send_verification_email_task(
-                user_id=user.id,
-                domain=domain,
-                scheme=scheme
+                user_id=user.id, domain=domain, scheme=scheme
             )
         )
 

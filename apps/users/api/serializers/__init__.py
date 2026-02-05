@@ -1,7 +1,10 @@
-from apps.users.api.serializers.user_serilizer import UserUpdateSerializer as UserUpdateSerializer
-from apps.users.api.serializers.user_serilizer import RegisterSerializer as RegisterSerializer
-
-from apps.users.api.serializers.profile_serializer import ProfileSerializer as ProfileSerializer
-from apps.users.api.serializers.profile_serializer import UserPublicSerializer as UserPublicSerializer
-
-from apps.users.api.serializers.token_serializer import CustomTokenObtainPairSerializer as CustomTokenObtainPairSerializer
+from apps.users.api.serializers.profile_serializer import \
+    ProfileSerializer as ProfileSerializer
+from apps.users.api.serializers.profile_serializer import \
+    UserPublicSerializer as UserPublicSerializer
+from apps.users.api.serializers.token_serializer import \
+    CustomTokenObtainPairSerializer as CustomTokenObtainPairSerializer
+from apps.users.api.serializers.user_serilizer import \
+    RegisterSerializer as RegisterSerializer
+from apps.users.api.serializers.user_serilizer import \
+    UserUpdateSerializer as UserUpdateSerializer

@@ -1,8 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.db import IntegrityError, transaction
 from rest_framework import status, viewsets
-from rest_framework.exceptions import NotFound
 from rest_framework.decorators import action
+from rest_framework.exceptions import NotFound
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.response import Response
@@ -11,7 +11,6 @@ from apps.users.api.serializers import ProfileSerializer
 from apps.users.infrastructure.models import Profile
 from apps.users.infrastructure.permissions import IsOwnerOrAdmin
 from apps.users.infrastructure.selectors import get_profile
-
 
 User = get_user_model()
 
@@ -63,11 +62,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     def _handle_update_profile(self, request: Request, profile: Profile) -> Response:
         partial = request.method == "PATCH"
 
-        serializer = self.get_serializer(
-            profile,
-            data=request.data,
-            partial=partial
-        )
+        serializer = self.get_serializer(profile, data=request.data, partial=partial)
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
@@ -88,7 +83,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
         if self._profile_exists(target_user):
             return Response(
                 {"detail": "Profile already exists."},
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_400_BAD_REQUEST,
             )
 
         return self._create_profile_for_user(request, target_user)
@@ -115,17 +110,14 @@ class UserProfileViewSet(viewsets.ModelViewSet):
             return User.objects.get(pk=user_id)
         except User.DoesNotExist:
             from rest_framework.exceptions import ValidationError
+
             raise ValidationError({"user": "Not found"})
 
     @staticmethod
     def _profile_exists(user: User) -> bool:
         return hasattr(user, "profile") and user.profile is not None
 
-    def _create_profile_for_user(
-            self,
-            request: Request,
-            target_user: User
-    ) -> Response:
+    def _create_profile_for_user(self, request: Request, target_user: User) -> Response:
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
@@ -134,15 +126,12 @@ class UserProfileViewSet(viewsets.ModelViewSet):
                 serializer.save(user=target_user)
         except IntegrityError:
             return Response(
-                {"detail": "Race or integrity error"},
-                status=status.HTTP_409_CONFLICT
+                {"detail": "Race or integrity error"}, status=status.HTTP_409_CONFLICT
             )
 
         headers = self.get_success_headers(serializer.data)
         return Response(
-            serializer.data,
-            status=status.HTTP_201_CREATED,
-            headers=headers
+            serializer.data, status=status.HTTP_201_CREATED, headers=headers
         )
 
     @transaction.atomic
@@ -162,11 +151,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
         profile = self.get_object()
         self.check_object_permissions(request, profile)
 
-        serializer = self.get_serializer(
-            profile,
-            data=request.data,
-            partial=partial
-        )
+        serializer = self.get_serializer(profile, data=request.data, partial=partial)
         serializer.is_valid(raise_exception=True)
         serializer.save()
 

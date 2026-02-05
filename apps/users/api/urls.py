@@ -2,7 +2,8 @@ from django.urls import include, path
 from rest_framework_simplejwt.views import TokenRefreshView
 
 from apps.users.api.routers import router
-from apps.users.api.views import CustomTokenObtainPairView, RegisterView, VerifyEmailView
+from apps.users.api.views import (CustomTokenObtainPairView, RegisterView,
+                                  VerifyEmailView)
 
 app_name = "users"
 

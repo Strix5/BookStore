@@ -2,11 +2,15 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ReadOnlyModelViewSet
 
-from apps.books.api.serializers import BookListSerializer, BookDetailSerializer, BookCategorySerializer
-from apps.books.interface.use_cases import GetAllowedBooksUseCase
-from apps.books.interface.paginations import CustomPagination
+from apps.books.api.serializers import (BookCategorySerializer,
+                                        BookDetailSerializer,
+                                        BookListSerializer)
 from apps.books.infrastructure.repositories import BookRepository
-from apps.books.infrastructure.selectors import get_active_categories, get_books_by_category, search_books
+from apps.books.infrastructure.selectors import (get_active_categories,
+                                                 get_books_by_category,
+                                                 search_books)
+from apps.books.interface.paginations import CustomPagination
+from apps.books.interface.use_cases import GetAllowedBooksUseCase
 
 
 class BookViewSet(ReadOnlyModelViewSet):
@@ -18,9 +22,9 @@ class BookViewSet(ReadOnlyModelViewSet):
         user_age = getattr(self.request.user, "age", 0)
         search_item = self.request.query_params.get("search")
 
-        allowed_ids = GetAllowedBooksUseCase(
-            book_repository=BookRepository()
-        ).execute(user_age=user_age)
+        allowed_ids = GetAllowedBooksUseCase(book_repository=BookRepository()).execute(
+            user_age=user_age
+        )
         qs = search_books(query=search_item)
 
         return qs.filter(id__in=allowed_ids)
@@ -42,9 +46,9 @@ class BookCategoryViewSet(ReadOnlyModelViewSet):
     def books(self, request, slug: str = None):
         user_age = getattr(request.user, "age", 0)
 
-        allowed_ids = GetAllowedBooksUseCase(
-            book_repository=BookRepository()
-        ).execute(user_age=user_age)
+        allowed_ids = GetAllowedBooksUseCase(book_repository=BookRepository()).execute(
+            user_age=user_age
+        )
         qs = get_books_by_category(slug=slug).filter(id__in=allowed_ids)
 
         page = self.paginate_queryset(qs)

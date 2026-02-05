@@ -8,7 +8,6 @@ from django.utils.http import urlsafe_base64_encode
 
 from apps.users.interface.tokens import email_verification_token
 
-
 User = get_user_model()
 
 

@@ -2,7 +2,6 @@ from django.contrib.auth import get_user_model
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
-
 User = get_user_model()
 
 
@@ -34,8 +33,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         # Проверка активации email
         if not user.is_active:
             raise AuthenticationFailed(
-                detail=self.ERROR_MESSAGE_INACTIVE,
-                code=self.ERROR_CODE_INACTIVE
+                detail=self.ERROR_MESSAGE_INACTIVE, code=self.ERROR_CODE_INACTIVE
             )
 
         # Добавляем данные пользователя в ответ
