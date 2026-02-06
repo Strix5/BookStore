@@ -8,12 +8,6 @@ User = get_user_model()
 
 
 class UserPublicSerializer(serializers.ModelSerializer):
-    """
-    Публичное представление пользователя.
-
-    Используется для отображения информации о пользователе
-    без конфиденциальных данных (пароль, email для неавторизованных и т.д.).
-    """
 
     class Meta:
         model = User
@@ -22,13 +16,6 @@ class UserPublicSerializer(serializers.ModelSerializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    """
-    Сериализатор профиля пользователя.
-
-    Принцип: сериализатор не изменяет связанного пользователя,
-    только данные профиля (biography, avatar).
-    """
-
     user = UserPublicSerializer(read_only=True)
 
     class Meta:
@@ -37,10 +24,4 @@ class ProfileSerializer(serializers.ModelSerializer):
         read_only_fields = ("id", "user")
 
     def update(self, instance, validated_data):
-        """
-        Обновление профиля через сервисный слой.
-
-        Делегируем логику обновления сервису для централизации
-        бизнес-правил и возможности повторного использования.
-        """
         return ProfileService.update_profile(profile=instance, **validated_data)

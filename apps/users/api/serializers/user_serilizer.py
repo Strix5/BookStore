@@ -52,14 +52,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         return value
 
     def create(self, validated_data):
-        """
-        Создание пользователя через сервисный слой.
-
-        Сериализатор НЕ содержит бизнес-логику - он только:
-        1. Валидирует данные
-        2. Извлекает домен из контекста
-        3. Делегирует создание в UserRegistrationService
-        """
         request = self.context.get("request")
         profile_data = validated_data.pop("profile", None)
 
@@ -80,13 +72,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
 
     def update(self, instance, validated_data):
-        """
-        Обновление пользователя и профиля.
-
-        Принцип разделения ответственности:
-        - UserService обновляет данные пользователя
-        - ProfileService управляет профилем
-        """
         profile_data = validated_data.pop("profile", serializers.empty)
 
         user = UserService.update_user(
@@ -102,27 +87,14 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
 
     def _handle_profile_update(self, user: User, profile_data) -> None:
-        """
-        Обработка обновления профиля.
-
-        Три сценария:
-        1. profile_data не передан (empty) - не трогаем профиль
-        2. profile_data = None - удаляем профиль
-        3. profile_data = {...} - обновляем/создаем профиль
-
-        Выделено в отдельный метод для читаемости основного метода update.
-        """
-        # Если данные профиля не переданы - не трогаем
         if profile_data is serializers.empty:
             return
 
-        # Если явно передан null - удаляем профиль
         if profile_data is None:
             if hasattr(user, "profile"):
                 ProfileService.delete_profile(user.profile)
             return
 
-        # Обновляем или создаем профиль
         if hasattr(user, "profile"):
             ProfileService.update_profile(user.profile, **profile_data)
         else:
