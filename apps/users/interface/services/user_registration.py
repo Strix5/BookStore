@@ -31,7 +31,7 @@ class UserRegistrationService:
         last_name: str,
         password: str,
         age: int,
-        profile_data: Optional[dict] = None,
+        profile_data: dict,
         domain: str,
         scheme: str = "https"
     ) -> User:

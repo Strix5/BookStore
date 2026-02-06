@@ -2,13 +2,12 @@ from django.contrib.auth import get_user_model
 from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
 from rest_framework import generics, status, viewsets
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAdminUser
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from apps.users.api.serializers import RegisterSerializer, UserUpdateSerializer
-from apps.users.infrastructure.permissions import IsOwnerOrAdmin
 from apps.users.interface.services import UserService
 from apps.users.interface.tokens import email_verification_token
 
@@ -102,7 +101,7 @@ class RegisterView(generics.CreateAPIView):
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.select_related("profile")
-    permission_classes = [IsAuthenticated, IsOwnerOrAdmin]
+    permission_classes = [IsAdminUser]
     lookup_field = "nickname"
 
     def get_serializer_class(self):

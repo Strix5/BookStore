@@ -9,7 +9,7 @@ from apps.users.infrastructure.managers import CustomUserManager
 class Profile(models.Model):
     user = models.OneToOneField(
         to=settings.AUTH_USER_MODEL,
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         related_name="profile",
         blank=True,
         null=True,
