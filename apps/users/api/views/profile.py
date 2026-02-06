@@ -69,15 +69,6 @@ class UserProfileViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def create(self, request: Request, *args, **kwargs) -> Response:
-        """
-        Profile creation.
-
-        Logic:
-        - Администратор может создать профиль для любого пользователя
-        - Обычный пользователь создает только свой профиль
-        - Проверка на существование профиля
-        - Обработка race conditions через транзакции
-        """
         target_user = self._determine_target_user(request)
 
         if self._profile_exists(target_user):
@@ -89,16 +80,6 @@ class UserProfileViewSet(viewsets.ModelViewSet):
         return self._create_profile_for_user(request, target_user)
 
     def _determine_target_user(self, request: Request) -> User:
-        """
-        Администратор может указать user_id в запросе,
-        обычный пользователь создает только свой профиль.
-
-        Returns:
-            User для которого создается профиль
-
-        Raises:
-            Response: 400 если указанный пользователь не найден
-        """
         if request.user.is_staff and "user" in request.data:
             return self._get_user_by_id(request.data["user"])
 
@@ -143,11 +124,6 @@ class UserProfileViewSet(viewsets.ModelViewSet):
         return self._perform_update(request, partial=True)
 
     def _perform_update(self, request: Request, partial: bool) -> Response:
-        """
-        Args:
-            request: HTTP request
-            partial: True for PATCH, False for PUT
-        """
         profile = self.get_object()
         self.check_object_permissions(request, profile)
 
