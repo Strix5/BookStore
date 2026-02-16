@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "apps.users",
     "apps.authors",
     "apps.company",
+    "apps.cart",
 ]
 
 MIDDLEWARE = [
@@ -93,7 +94,6 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# Unused
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
@@ -130,7 +130,6 @@ REST_FRAMEWORK = {
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
-# Unused
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),

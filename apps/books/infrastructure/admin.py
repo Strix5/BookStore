@@ -8,8 +8,8 @@ from apps.books.infrastructure.models import Book, BookCategory
 
 @admin.register(Book)
 class BookAdmin(TranslatableAdmin):
-    list_display = ("name", "is_active", "image_preview")
-    list_editable = ("is_active",)
+    list_display = ("id", "name", "is_active", "is_adult", "in_stock", "image_preview")
+    list_editable = ("is_active", "is_adult", "in_stock")
     list_filter = ("created_at",)
     list_per_page = 20
     readonly_fields = ("image_preview", "slug", "updated_at", "created_at")
@@ -24,6 +24,8 @@ class BookAdmin(TranslatableAdmin):
                 "fields": (
                     "name",
                     "description",
+                    "price",
+                    "in_stock",
                     "category",
                     "author",
                     "is_active",

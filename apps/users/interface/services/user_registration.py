@@ -1,10 +1,9 @@
-from typing import Optional
-
 from django.contrib.auth import get_user_model
 from django.db import transaction
 
 from apps.users.interface.services.profile import ProfileService
 from apps.users.interface.tasks import send_verification_email_task
+
 
 User = get_user_model()
 
@@ -45,7 +44,7 @@ class UserRegistrationService:
             last_name: Фамилия
             age: Age
             password: Пароль (будет хеширован)
-            profile_data: Опциональные данные профиля (биография, аватар)
+            profile_data: данные профиля (биография, аватар)
             domain: Домен для генерации ссылки верификации
             scheme: Схема URL (http/https)
 

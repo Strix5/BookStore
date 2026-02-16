@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from parler.models import TranslatableModel, TranslatedFields
 
 from apps.authors.infrastructure.models import Author
-from apps.books.common.book_model import AbstractDateTimeModel
+from commons.models.abstract_models import AbstractDateTimeModel
 
 
 class BookCategory(TranslatableModel, AbstractDateTimeModel):
@@ -56,6 +56,8 @@ class Book(TranslatableModel, AbstractDateTimeModel):
         blank=True,
         null=True
     )
+    price = models.PositiveSmallIntegerField(default=0)
+    in_stock = models.PositiveSmallIntegerField(default=1, verbose_name=_("Books count in stock"))
     slug = models.SlugField(
         max_length=255,
         unique=True,

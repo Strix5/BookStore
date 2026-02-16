@@ -26,13 +26,12 @@ class BookListSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "description",
-            "file",
+            "price",
             "image",
             "slug",
             "is_adult",
             "authors",
             "categories",
-            "created_at",
             "created_at_display",
         )
 
@@ -68,13 +67,13 @@ class BookDetailSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "description",
+            "price",
             "file",
             "image",
             "slug",
             "is_adult",
             "authors",
             "categories",
-            "created_at",
             "created_at_display",
         )
 

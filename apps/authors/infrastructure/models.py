@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from parler.models import TranslatableModel, TranslatedFields
 
-from apps.books.common import AbstractDateTimeModel
+from commons.models.abstract_models import AbstractDateTimeModel
 
 
 class Author(TranslatableModel, AbstractDateTimeModel):
