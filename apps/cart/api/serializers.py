@@ -25,6 +25,16 @@ class CartItemSerializer(serializers.ModelSerializer):
     def get_subtotal(obj: CartItem) -> float:
         return obj.book.price * obj.quantity
 
+    def to_representation(self, instance: CartItem) -> dict:
+        representation = super().to_representation(instance)
+        request = self.context.get('request')
+        book_serializer = BookListSerializer(
+            instance.book,
+            context={'request': request}
+        )
+        representation['book'] = book_serializer.data
+        return representation
+
 
 class CartSerializer(serializers.ModelSerializer):
     items = CartItemSerializer(many=True, read_only=True)
@@ -38,6 +48,7 @@ class CartSerializer(serializers.ModelSerializer):
             'items',
             'total_items',
             'total_price',
+            'is_active',
             'created_at',
             'updated_at'
         ]

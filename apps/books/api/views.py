@@ -9,12 +9,12 @@ from apps.books.infrastructure.repositories import BookRepository
 from apps.books.infrastructure.selectors import (get_active_categories,
                                                  get_books_by_category,
                                                  search_books)
-from apps.books.interface.paginations import CustomPagination
+from apps.books.interface.paginations import CustomBooksPagination
 from apps.books.interface.use_cases import GetAllowedBooksUseCase
 
 
 class BookViewSet(ReadOnlyModelViewSet):
-    pagination_class = CustomPagination
+    pagination_class = CustomBooksPagination
     lookup_field = "slug"
     permission_classes = [IsAuthenticated]
 
@@ -36,7 +36,7 @@ class BookViewSet(ReadOnlyModelViewSet):
 class BookCategoryViewSet(ReadOnlyModelViewSet):
     serializer_class = BookCategorySerializer
     lookup_field = "slug"
-    pagination_class = CustomPagination
+    pagination_class = CustomBooksPagination
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):

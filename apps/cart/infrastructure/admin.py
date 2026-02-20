@@ -29,7 +29,7 @@ class CartItemInline(admin.TabularInline):
         if obj.book:
             active_badge = "✓" if obj.book.is_active else "✗"
             return format_html(
-                '<a href="/admin/books/book/{}/change/">{}</a> {}',
+                '<a href="/admin-panel/books/book/{}/change/">{}</a> {}',
                 obj.book.id,
                 obj.book.name,
                 active_badge
@@ -49,6 +49,7 @@ class CartAdmin(admin.ModelAdmin):
         'user_link',
         'items_count',
         'total_quantity',
+        'is_active',
         'created_at',
         'updated_at'
     ]
@@ -76,7 +77,7 @@ class CartAdmin(admin.ModelAdmin):
 
     def user_link(self, obj):
         return format_html(
-            '<a href="/admin/users/customuser/{}/change/">{} ({})</a>',
+            '<a href="/admin-panel/users/customuser/{}/change/">{} ({})</a>',
             obj.user.id,
             obj.user.email,
             obj.user.nickname
@@ -96,9 +97,6 @@ class CartAdmin(admin.ModelAdmin):
     total_quantity.short_description = _("Total Items")
 
     def has_add_permission(self, request):
-        return False
-
-    def has_delete_permission(self, request, obj=None):
         return False
 
 
@@ -138,7 +136,7 @@ class CartItemAdmin(admin.ModelAdmin):
 
     def cart_user(self, obj):
         return format_html(
-            '<a href="/admin/cart/cart/{}/change/">{}</a>',
+            '<a href="/admin-panel/cart/cart/{}/change/">{}</a>',
             obj.cart.id,
             obj.cart.user.nickname
         )
@@ -148,7 +146,7 @@ class CartItemAdmin(admin.ModelAdmin):
 
     def book_link(self, obj):
         return format_html(
-            '<a href="/admin/books/book/{}/change/">{}</a>',
+            '<a href="/admin-panel/books/book/{}/change/">{}</a>',
             obj.book.id,
             obj.book.name
         )
@@ -157,9 +155,6 @@ class CartItemAdmin(admin.ModelAdmin):
     book_link.admin_order_field = 'book__translations__name'
 
     def has_add_permission(self, request):
-        return False
-
-    def has_delete_permission(self, request, obj=None):
         return False
 
 
@@ -195,7 +190,7 @@ class FavoriteAdmin(admin.ModelAdmin):
 
     def user_link(self, obj):
         return format_html(
-            '<a href="/admin/users/customuser/{}/change/">{}</a>',
+            '<a href="/admin-panel/users/customuser/{}/change/">{}</a>',
             obj.user.id,
             obj.user.nickname
         )
@@ -205,7 +200,7 @@ class FavoriteAdmin(admin.ModelAdmin):
 
     def book_link(self, obj):
         return format_html(
-            '<a href="/admin/books/book/{}/change/">{}</a>',
+            '<a href="/admin-panel/books/book/{}/change/">{}</a>',
             obj.book.id,
             obj.book.name
         )
@@ -214,7 +209,4 @@ class FavoriteAdmin(admin.ModelAdmin):
     book_link.admin_order_field = 'book__translations__name'
 
     def has_add_permission(self, request):
-        return False
-
-    def has_delete_permission(self, request, obj=None):
         return False

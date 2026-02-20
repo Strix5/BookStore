@@ -56,17 +56,22 @@ cp .env.example .env
 python manage.py migrate
 ```
 
-6. Собрать статику:
+6. Загрузить данные:
+```bash 
+python manage.py loaddata fixtures/initial_data.json
+```
+
+7. Собрать статику:
 ```bash
 python manage.py collectstatic
 ```
 
-7. Создайте суперпользователя:
+8. Создайте суперпользователя:
 ```bash
 python manage.py createsuperuser
 ```
 
-8. Запустите сервер разработки:
+9. Запустите сервер разработки:
 ```bash
 python manage.py runserver
 ```

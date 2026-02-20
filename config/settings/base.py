@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "apps.authors",
     "apps.company",
     "apps.cart",
+    "apps.orders",
 ]
 
 MIDDLEWARE = [
@@ -131,7 +132,7 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=3600),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,

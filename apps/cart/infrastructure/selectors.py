@@ -27,7 +27,7 @@ def get_cart_with_items(user: User) -> Optional[Cart]:
                     'book__author'
                 ).order_by('-created_at')
             )
-        ).get(user=user)
+        ).filter(is_active=True, user=user).first()
     except Cart.DoesNotExist:
         return None
 

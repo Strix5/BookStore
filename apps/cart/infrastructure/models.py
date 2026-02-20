@@ -14,6 +14,7 @@ class Cart(AbstractDateTimeModel):
         on_delete=models.CASCADE,
         related_name="cart",
     )
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = _("Cart")

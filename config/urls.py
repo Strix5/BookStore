@@ -29,14 +29,15 @@ urlpatterns = [
     path("api/users/", include("apps.users.api.urls")),
     path("api/company/", include("apps.company.api.urls")),
     path("api/cart/", include("apps.cart.api.urls")),
-    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    path("api/orders/", include("apps.orders.api.urls")),
+    path("api/documentations/schema/", SpectacularAPIView.as_view(), name="schema"),
     path(
-        "api/docs/swagger/",
+        "api/documentations/swagger/",
         SpectacularSwaggerView.as_view(url_name="schema"),
         name="swagger-ui",
     ),
     path(
-        "api/docs/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"
+        "api/documentations/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"
     ),
     path("i18n/", include("django.conf.urls.i18n")),
 ]

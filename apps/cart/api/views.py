@@ -106,7 +106,7 @@ class CartViewSet(viewsets.ViewSet):
                 'total_price': 0.0
             })
 
-        serializer = CartSerializer(cart)
+        serializer = CartSerializer(cart, context={'request': request})
         return Response(serializer.data)
 
     @extend_schema(
@@ -184,7 +184,7 @@ class CartViewSet(viewsets.ViewSet):
             quantity=quantity
         )
 
-        item_serializer = CartItemSerializer(cart_item)
+        item_serializer = CartItemSerializer(cart_item, context={'request': request})
 
         return Response(
             {
@@ -438,7 +438,7 @@ class FavoriteViewSet(viewsets.ViewSet):
                                     "slug": "clean-code",
                                     "price": 500,
                                 },
-                                "created_at": "2024-01-15T10:00:00Z",
+                                "created_at": "2026-01-01T10:00:00Z",
                             }
                         ],
                     ),
@@ -464,7 +464,7 @@ class FavoriteViewSet(viewsets.ViewSet):
         ]
         """
         favorites = get_user_favorites(request.user)
-        serializer = FavoriteSerializer(favorites, many=True)
+        serializer = FavoriteSerializer(favorites, many=True, context={'request': request})
         return Response(serializer.data)
 
     @extend_schema(
@@ -487,7 +487,7 @@ class FavoriteViewSet(viewsets.ViewSet):
                             "favorite": {
                                 "id": 1,
                                 "book": {"id": 5, "name": "Clean Code", "price": 500},
-                                "created_at": "2024-01-15T10:00:00Z",
+                                "created_at": "2026-01-01T10:00:00Z",
                             },
                         },
                     ),
@@ -504,7 +504,7 @@ class FavoriteViewSet(viewsets.ViewSet):
                             "favorite": {
                                 "id": 1,
                                 "book": {"id": 5, "name": "Clean Code", "price": 500},
-                                "created_at": "2024-01-10T08:00:00Z",
+                                "created_at": "2026-01-01T08:00:00Z",
                             },
                         },
                     ),
@@ -544,7 +544,7 @@ class FavoriteViewSet(viewsets.ViewSet):
             book_id=book_id
         )
 
-        favorite_serializer = FavoriteSerializer(favorite)
+        favorite_serializer = FavoriteSerializer(favorite, context={'request': request})
 
         return Response(
             {
