@@ -58,7 +58,7 @@ python manage.py migrate
 
 6. Загрузить данные:
 ```bash 
-python manage.py loaddata fixtures/initial_data.json
+python manage.py loaddata fixtures/data.json
 ```
 
 7. Собрать статику:

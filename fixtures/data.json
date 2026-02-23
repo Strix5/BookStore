@@ -1,0 +1,381 @@
+[
+{
+  "model": "books.bookcategorytranslation",
+  "pk": 1,
+  "fields": {
+    "language_code": "tk",
+    "name": "Fantastikalar",
+    "master": 1
+  }
+},
+{
+  "model": "books.bookcategorytranslation",
+  "pk": 2,
+  "fields": {
+    "language_code": "ru",
+    "name": "Фэнтези",
+    "master": 1
+  }
+},
+{
+  "model": "books.bookcategorytranslation",
+  "pk": 3,
+  "fields": {
+    "language_code": "en",
+    "name": "Sci-Fi",
+    "master": 1
+  }
+},
+{
+  "model": "books.bookcategorytranslation",
+  "pk": 4,
+  "fields": {
+    "language_code": "tk",
+    "name": "Detektiwlar",
+    "master": 2
+  }
+},
+{
+  "model": "books.bookcategorytranslation",
+  "pk": 5,
+  "fields": {
+    "language_code": "ru",
+    "name": "Детективы",
+    "master": 2
+  }
+},
+{
+  "model": "books.bookcategorytranslation",
+  "pk": 6,
+  "fields": {
+    "language_code": "en",
+    "name": "Crime Fictions",
+    "master": 2
+  }
+},
+{
+  "model": "books.bookcategory",
+  "pk": 1,
+  "fields": {
+    "created_at": "2026-02-05T09:50:51.464Z",
+    "updated_at": "2026-02-05T09:51:04.988Z",
+    "image": "book_categories/sci-fi_7d5RGGu.jpg",
+    "slug": "sci-fi",
+    "is_active": true
+  }
+},
+{
+  "model": "books.bookcategory",
+  "pk": 2,
+  "fields": {
+    "created_at": "2026-02-05T10:14:48.920Z",
+    "updated_at": "2026-02-05T10:15:12.315Z",
+    "image": "book_categories/detective_RDjW7U5.jpg",
+    "slug": "crime-fictions",
+    "is_active": true
+  }
+},
+{
+  "model": "books.booktranslation",
+  "pk": 1,
+  "fields": {
+    "language_code": "ru",
+    "name": "Приключения Шерлока Холмса",
+    "description": "<p>После создания двух повестей о <a href=\"https://ru.wikipedia.org/wiki/%D0%A8%D0%B5%D1%80%D0%BB%D0%BE%D0%BA_%D0%A5%D0%BE%D0%BB%D0%BC%D1%81\" title=\"Шерлок Холмс\">Шерлоке Холмсе</a> &laquo;<a href=\"https://ru.wikipedia.org/wiki/%D0%AD%D1%82%D1%8E%D0%B4_%D0%B2_%D0%B1%D0%B0%D0%B3%D1%80%D0%BE%D0%B2%D1%8B%D1%85_%D1%82%D0%BE%D0%BD%D0%B0%D1%85\" title=\"Этюд в багровых тонах\">Этюд в багровых тонах</a>&raquo; (первая публикация в 1887 году) и &laquo;<a href=\"https://ru.wikipedia.org/wiki/%D0%97%D0%BD%D0%B0%D0%BA_%D1%87%D0%B5%D1%82%D1%8B%D1%80%D1%91%D1%85\" title=\"Знак четырёх\">Знак четырёх</a>&raquo; (1890) Конан Дойл решил переключиться на короткие рассказы о Холмсе. Рассказы публиковались раз в месяц в номерах с июля 1891 года по июнь 1892 года в недавно появившемся журнале <em>&laquo;<a href=\"https://ru.wikipedia.org/wiki/Strand_Magazine\" title=\"Strand Magazine\">Strand Magazine</a>&raquo;</em>.</p>\r\n\r\n<p>Дойлу платили по 30 <a href=\"https://ru.wikipedia.org/wiki/%D0%93%D0%B8%D0%BD%D0%B5%D1%8F\" title=\"Гинея\">гиней</a> за каждый рассказ (за целую повесть &laquo;Этюд в багровых тонах&raquo; писатель получил от издательства &quot;<em>Ward, Lock &amp; Co.&quot;</em> всего 25 фунтов).</p>\r\n\r\n<p>Первым <a href=\"https://ru.wikipedia.org/wiki/25_%D0%B8%D1%8E%D0%BD%D1%8F\" title=\"25 июня\">25 июня</a> <a href=\"https://ru.wikipedia.org/wiki/1891_%D0%B3%D0%BE%D0%B4\" title=\"1891 год\">1891 года</a> в июльском номере журнала был опубликован рассказ &laquo;<a href=\"https://ru.wikipedia.org/wiki/%D0%A1%D0%BA%D0%B0%D0%BD%D0%B4%D0%B0%D0%BB_%D0%B2_%D0%91%D0%BE%D0%B3%D0%B5%D0%BC%D0%B8%D0%B8\" title=\"Скандал в Богемии\">Скандал в Богемии</a>&raquo; (он же затем был первым и в сборнике). Именно в этом рассказе впервые появился персонаж <a class=\"mw-redirect\" href=\"https://ru.wikipedia.org/wiki/%D0%98%D1%80%D1%8D%D0%BD_%D0%90%D0%B4%D0%BB%D0%B5%D1%80\" title=\"Ирэн Адлер\">Ирэн Адлер</a>. Публикация рассказов способствовала росту популярности журнала. Целиком сборник был опубликован 14 октября 1892 года издателем &quot;<em>Strand Magazine&quot;</em> <a href=\"https://ru.wikipedia.org/wiki/%D0%9D%D1%8C%D1%8E%D0%BD%D1%81,_%D0%94%D0%B6%D0%BE%D1%80%D0%B4%D0%B6\" title=\"Ньюнс, Джордж\">Джорджем Ньюнсом</a> и является первым сборником рассказов о Холмсе. Первый тираж составил 10 000 экземпляров, ещё 4500 экземпляров было напечатано в США издательством &quot;<em>Harper Brothers&quot;</em>.</p>\r\n\r\n<p>Иллюстратором публикаций отдельных рассказов в журнале, а затем и всего сборника выступил <a href=\"https://ru.wikipedia.org/wiki/%D0%9F%D1%8D%D0%B4%D0%B6%D0%B5%D1%82,_%D0%A1%D0%B8%D0%B4%D0%BD%D0%B8\" title=\"Пэджет, Сидни\">Сидни Пэджет</a>, он впервые работал над произведениями о Шерлоке Холмсе.</p>\r\n\r\n<p>Во всех рассказах повествование ведётся от первого лица, в качестве рассказчика выступает <a href=\"https://ru.wikipedia.org/wiki/%D0%94%D0%BE%D0%BA%D1%82%D0%BE%D1%80_%D0%92%D0%B0%D1%82%D1%81%D0%BE%D0%BD\" title=\"Доктор Ватсон\">доктор Ватсон</a>. В ряде рассказов преступники остаются по тем или иным причинам безнаказанными, также постоянно присутствует тема оправдания ложно обвинённого.</p>\r\n\r\n<p>В 1927 году Конан Дойл назвал 12 своих лучших рассказов о Холмсе, среди них было сразу несколько произведений из этого сборника, при этом рассказ &laquo;<a href=\"https://ru.wikipedia.org/wiki/%D0%9F%D1%91%D1%81%D1%82%D1%80%D0%B0%D1%8F_%D0%BB%D0%B5%D0%BD%D1%82%D0%B0\" title=\"Пёстрая лента\">Пёстрая лента</a>&raquo; писатель назвал своим любимым, а &laquo;<a href=\"https://ru.wikipedia.org/wiki/%D0%A1%D0%BE%D1%8E%D0%B7_%D1%80%D1%8B%D0%B6%D0%B8%D1%85\" title=\"Союз рыжих\">Союз рыжих</a>&raquo; поставил на второе место.</p>\r\n\r\n<p>Рассказы из этого сборника, как и другие произведения о Холмсе, экранизировались множество раз. Некоторые произведения (фильмы, игры и т. д.) носят название &laquo;Приключения Шерлока Холмса&raquo;, но их сюжет иногда не связан конкретно с рассказами из сборника. Многие рассказы были экранизированы в сериале &laquo;<a href=\"https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D0%BF%D0%B8%D0%B7%D0%BE%D0%B4%D0%BE%D0%B2_%D1%82%D0%B5%D0%BB%D0%B5%D1%81%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D0%B0_%C2%AB%D0%9F%D1%80%D0%B8%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D1%8F_%D0%A8%D0%B5%D1%80%D0%BB%D0%BE%D0%BA%D0%B0_%D0%A5%D0%BE%D0%BB%D0%BC%D1%81%D0%B0%C2%BB\" title=\"Список эпизодов телесериала «Приключения Шерлока Холмса»\">Шерлок Холмс</a>&raquo;, снятом <a href=\"https://ru.wikipedia.org/wiki/Granada_Television\" title=\"Granada Television\">Granada Television</a> в 1984&mdash;1994 годах.</p>",
+    "master": 1
+  }
+},
+{
+  "model": "books.booktranslation",
+  "pk": 2,
+  "fields": {
+    "language_code": "tk",
+    "name": "The Adventures of Sherlock Holmes",
+    "description": "<p><em><strong>The Adventures of Sherlock Holmes</strong></em> is a collection of short stories by British writer <a href=\"https://en.wikipedia.org/wiki/Arthur_Conan_Doyle\" title=\"Arthur Conan Doyle\">Arthur Conan Doyle</a>, first published on 14 October 1892. It contains the earliest short stories featuring the consulting detective <a href=\"https://en.wikipedia.org/wiki/Sherlock_Holmes\" title=\"Sherlock Holmes\">Sherlock Holmes</a>, which had been published in twelve monthly issues of <em><a href=\"https://en.wikipedia.org/wiki/The_Strand_Magazine\" title=\"The Strand Magazine\">The Strand Magazine</a></em> from July 1891 to June 1892. The stories are collected in the same sequence, which is not supported by any fictional chronology. The only characters common to all twelve are Holmes and <a href=\"https://en.wikipedia.org/wiki/Dr._Watson\" title=\"Dr. Watson\">Dr. Watson</a>, and all are related in <a href=\"https://en.wikipedia.org/wiki/First-person_narrative\" title=\"First-person narrative\">first-person narrative</a> from Watson&#39;s point of view.</p>\r\n\r\n<p>In general the stories in <em>The Adventures of Sherlock Holmes</em> identify, and try to correct, social injustices. Holmes is portrayed as offering a new, fairer sense of justice. The stories were well received, and boosted the subscriptions figures of <em>The Strand Magazine</em>, prompting Doyle to be able to demand more money for his next set of stories. The first story, &quot;<a href=\"https://en.wikipedia.org/wiki/A_Scandal_in_Bohemia\" title=\"A Scandal in Bohemia\">A Scandal in Bohemia</a>&quot;, includes the character of <a href=\"https://en.wikipedia.org/wiki/Irene_Adler\" title=\"Irene Adler\">Irene Adler</a>, who, despite being featured only within this one story by Doyle, is a prominent character in modern Sherlock Holmes adaptations, often as a love interest for Holmes. Doyle included four of the stories from this collection in his twelve favourite Sherlock Holmes stories, picking &quot;<a href=\"https://en.wikipedia.org/wiki/The_Adventure_of_the_Speckled_Band\" title=\"The Adventure of the Speckled Band\">The Adventure of the Speckled Band</a>&quot; as his overall favourite.</p>",
+    "master": 1
+  }
+},
+{
+  "model": "books.booktranslation",
+  "pk": 3,
+  "fields": {
+    "language_code": "en",
+    "name": "The Adventures of Sherlock Holmes",
+    "description": "<p><em><strong>The Adventures of Sherlock Holmes</strong></em> is a collection of short stories by British writer <a href=\"https://en.wikipedia.org/wiki/Arthur_Conan_Doyle\" title=\"Arthur Conan Doyle\">Arthur Conan Doyle</a>, first published on 14 October 1892. It contains the earliest short stories featuring the consulting detective <a href=\"https://en.wikipedia.org/wiki/Sherlock_Holmes\" title=\"Sherlock Holmes\">Sherlock Holmes</a>, which had been published in twelve monthly issues of <em><a href=\"https://en.wikipedia.org/wiki/The_Strand_Magazine\" title=\"The Strand Magazine\">The Strand Magazine</a></em> from July 1891 to June 1892. The stories are collected in the same sequence, which is not supported by any fictional chronology. The only characters common to all twelve are Holmes and <a href=\"https://en.wikipedia.org/wiki/Dr._Watson\" title=\"Dr. Watson\">Dr. Watson</a>, and all are related in <a href=\"https://en.wikipedia.org/wiki/First-person_narrative\" title=\"First-person narrative\">first-person narrative</a> from Watson&#39;s point of view.</p>\r\n\r\n<p>In general the stories in <em>The Adventures of Sherlock Holmes</em> identify, and try to correct, social injustices. Holmes is portrayed as offering a new, fairer sense of justice. The stories were well received, and boosted the subscriptions figures of <em>The Strand Magazine</em>, prompting Doyle to be able to demand more money for his next set of stories. The first story, &quot;<a href=\"https://en.wikipedia.org/wiki/A_Scandal_in_Bohemia\" title=\"A Scandal in Bohemia\">A Scandal in Bohemia</a>&quot;, includes the character of <a href=\"https://en.wikipedia.org/wiki/Irene_Adler\" title=\"Irene Adler\">Irene Adler</a>, who, despite being featured only within this one story by Doyle, is a prominent character in modern Sherlock Holmes adaptations, often as a love interest for Holmes. Doyle included four of the stories from this collection in his twelve favourite Sherlock Holmes stories, picking &quot;<a href=\"https://en.wikipedia.org/wiki/The_Adventure_of_the_Speckled_Band\" title=\"The Adventure of the Speckled Band\">The Adventure of the Speckled Band</a>&quot; as his overall favourite.</p>",
+    "master": 1
+  }
+},
+{
+  "model": "books.booktranslation",
+  "pk": 4,
+  "fields": {
+    "language_code": "tk",
+    "name": "Ender's Game",
+    "description": "<p><em><strong>Ender&#39;s Game</strong></em> is a 1985 <a href=\"https://en.wikipedia.org/wiki/Military_science_fiction\" title=\"Military science fiction\">military science fiction</a> novel by American author <a href=\"https://en.wikipedia.org/wiki/Orson_Scott_Card\" title=\"Orson Scott Card\">Orson Scott Card</a>. Set at an unspecified date in Earth&#39;s future, the novel presents an imperiled humankind after two conflicts with an <a class=\"mw-redirect\" href=\"https://en.wikipedia.org/wiki/Insectoids_in_science_fiction\" title=\"Insectoids in science fiction\">insectoid</a> <a href=\"https://en.wikipedia.org/wiki/Extraterrestrial_life\" title=\"Extraterrestrial life\">alien species</a> they dub &quot;the <a href=\"https://en.wikipedia.org/wiki/Ender%27s_Game_(novel_series)#Formics\" title=\"Ender's Game (novel series)\">buggers</a>&quot;. In preparation for an anticipated third invasion, Earth&#39;s international military force recruits young children, including the novel&#39;s protagonist, <a href=\"https://en.wikipedia.org/wiki/Ender_Wiggin\" title=\"Ender Wiggin\">Andrew &quot;Ender&quot; Wiggin</a>, to be trained as elite officers. The children learn military strategy and leadership by playing increasingly difficult <a class=\"mw-redirect\" href=\"https://en.wikipedia.org/wiki/War_games\" title=\"War games\">war games</a>, including some in <a href=\"https://en.wikipedia.org/wiki/Weightlessness\" title=\"Weightlessness\">zero gravity</a>, where Ender&#39;s <a href=\"https://en.wikipedia.org/wiki/Military_tactics\" title=\"Military tactics\">tactical</a> <a href=\"https://en.wikipedia.org/wiki/Genius\" title=\"Genius\">genius</a> is revealed.</p>\r\n\r\n<p>The book originated as a short story <a href=\"https://en.wikipedia.org/wiki/Ender%27s_Game_(short_story)\" title=\"Ender's Game (short story)\">of the same name</a>, published in the August 1977 issue of <em><a href=\"https://en.wikipedia.org/wiki/Analog_Science_Fiction_and_Fact\" title=\"Analog Science Fiction and Fact\">Analog Science Fiction and Fact</a></em>.&nbsp;The novel was published on January 15, 1985. Later, by elaborating on characters and plotlines depicted in the novel, Card wrote additional books in the <a class=\"mw-redirect\" href=\"https://en.wikipedia.org/wiki/Ender%27s_Game_(series)\" title=\"Ender's Game (series)\"><em>Ender&#39;s Game</em> series</a>. Card released an updated version of <em>Ender&#39;s Game</em> in 1991, changing some political facts to account for the then-recent <a href=\"https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union\" title=\"Dissolution of the Soviet Union\">dissolution of the Soviet Union</a> and the end of the <a href=\"https://en.wikipedia.org/wiki/Cold_War\" title=\"Cold War\">Cold War</a>. The novel has been translated into 34 languages. In the movie adaptation and novels after the original sequels, &quot;buggers&quot; are referred to as &quot;Formics&quot;.</p>\r\n\r\n<p>Reception of the book has been largely positive. It has become suggested reading for military organizations such as the <a href=\"https://en.wikipedia.org/wiki/United_States_Marine_Corps\" title=\"United States Marine Corps\">United States Marine Corps</a>. <em>Ender&#39;s Game</em> was recognized as &quot;best novel&quot; by the 1985 <a href=\"https://en.wikipedia.org/wiki/Nebula_Award\" title=\"Nebula Award\">Nebula Award</a> and the 1986 <a href=\"https://en.wikipedia.org/wiki/Hugo_Award\" title=\"Hugo Award\">Hugo Award</a>&nbsp;in the genres of science fiction and fantasy. Its four sequels&mdash;<em><a href=\"https://en.wikipedia.org/wiki/Speaker_for_the_Dead\" title=\"Speaker for the Dead\">Speaker for the Dead</a></em> (1986), <em><a href=\"https://en.wikipedia.org/wiki/Xenocide\" title=\"Xenocide\">Xenocide</a></em> (1991), <em><a href=\"https://en.wikipedia.org/wiki/Children_of_the_Mind\" title=\"Children of the Mind\">Children of the Mind</a></em> (1996)<em>,</em> and <em><a href=\"https://en.wikipedia.org/wiki/Ender_in_Exile\" title=\"Ender in Exile\">Ender in Exile</a></em> (2008)<em>&mdash;</em>follow Ender&#39;s subsequent travels to many different worlds in the galaxy. In addition, the later novella <em><a class=\"mw-redirect\" href=\"https://en.wikipedia.org/wiki/A_War_of_Gifts\" title=\"A War of Gifts\">A War of Gifts</a></em> (2007) and novel <em><a href=\"https://en.wikipedia.org/wiki/Ender%27s_Shadow\" title=\"Ender's Shadow\">Ender&#39;s Shadow</a></em> (1999), plus other novels in the <em>Shadow</em> saga, take place during the same time period as the original.</p>\r\n\r\n<p>A <a href=\"https://en.wikipedia.org/wiki/Ender%27s_Game_(film)\" title=\"Ender's Game (film)\">film adaptation of the same name</a>, written for the screen and directed by <a href=\"https://en.wikipedia.org/wiki/Gavin_Hood\" title=\"Gavin Hood\">Gavin Hood</a>, and starring <a href=\"https://en.wikipedia.org/wiki/Asa_Butterfield\" title=\"Asa Butterfield\">Asa Butterfield</a> as Ender, was released in October 2013. Card co-produced the film.&nbsp;The novel has also been adapted into <a class=\"mw-redirect\" href=\"https://en.wikipedia.org/wiki/Ender%27s_Game_(series)#Comic_books_in_the_series\" title=\"Ender's Game (series)\">two comic book series</a>.</p>",
+    "master": 2
+  }
+},
+{
+  "model": "books.booktranslation",
+  "pk": 5,
+  "fields": {
+    "language_code": "en",
+    "name": "Ender's Game",
+    "description": "<p><em><strong>Ender&#39;s Game</strong></em> is a 1985 <a href=\"https://en.wikipedia.org/wiki/Military_science_fiction\" title=\"Military science fiction\">military science fiction</a> novel by American author <a href=\"https://en.wikipedia.org/wiki/Orson_Scott_Card\" title=\"Orson Scott Card\">Orson Scott Card</a>. Set at an unspecified date in Earth&#39;s future, the novel presents an imperiled humankind after two conflicts with an <a class=\"mw-redirect\" href=\"https://en.wikipedia.org/wiki/Insectoids_in_science_fiction\" title=\"Insectoids in science fiction\">insectoid</a> <a href=\"https://en.wikipedia.org/wiki/Extraterrestrial_life\" title=\"Extraterrestrial life\">alien species</a> they dub &quot;the <a href=\"https://en.wikipedia.org/wiki/Ender%27s_Game_(novel_series)#Formics\" title=\"Ender's Game (novel series)\">buggers</a>&quot;. In preparation for an anticipated third invasion, Earth&#39;s international military force recruits young children, including the novel&#39;s protagonist, <a href=\"https://en.wikipedia.org/wiki/Ender_Wiggin\" title=\"Ender Wiggin\">Andrew &quot;Ender&quot; Wiggin</a>, to be trained as elite officers. The children learn military strategy and leadership by playing increasingly difficult <a class=\"mw-redirect\" href=\"https://en.wikipedia.org/wiki/War_games\" title=\"War games\">war games</a>, including some in <a href=\"https://en.wikipedia.org/wiki/Weightlessness\" title=\"Weightlessness\">zero gravity</a>, where Ender&#39;s <a href=\"https://en.wikipedia.org/wiki/Military_tactics\" title=\"Military tactics\">tactical</a> <a href=\"https://en.wikipedia.org/wiki/Genius\" title=\"Genius\">genius</a> is revealed.</p>\r\n\r\n<p>The book originated as a short story <a href=\"https://en.wikipedia.org/wiki/Ender%27s_Game_(short_story)\" title=\"Ender's Game (short story)\">of the same name</a>, published in the August 1977 issue of <em><a href=\"https://en.wikipedia.org/wiki/Analog_Science_Fiction_and_Fact\" title=\"Analog Science Fiction and Fact\">Analog Science Fiction and Fact</a></em>.&nbsp;The novel was published on January 15, 1985. Later, by elaborating on characters and plotlines depicted in the novel, Card wrote additional books in the <a class=\"mw-redirect\" href=\"https://en.wikipedia.org/wiki/Ender%27s_Game_(series)\" title=\"Ender's Game (series)\"><em>Ender&#39;s Game</em> series</a>. Card released an updated version of <em>Ender&#39;s Game</em> in 1991, changing some political facts to account for the then-recent <a href=\"https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union\" title=\"Dissolution of the Soviet Union\">dissolution of the Soviet Union</a> and the end of the <a href=\"https://en.wikipedia.org/wiki/Cold_War\" title=\"Cold War\">Cold War</a>. The novel has been translated into 34 languages. In the movie adaptation and novels after the original sequels, &quot;buggers&quot; are referred to as &quot;Formics&quot;.</p>\r\n\r\n<p>Reception of the book has been largely positive. It has become suggested reading for military organizations such as the <a href=\"https://en.wikipedia.org/wiki/United_States_Marine_Corps\" title=\"United States Marine Corps\">United States Marine Corps</a>. <em>Ender&#39;s Game</em> was recognized as &quot;best novel&quot; by the 1985 <a href=\"https://en.wikipedia.org/wiki/Nebula_Award\" title=\"Nebula Award\">Nebula Award</a> and the 1986 <a href=\"https://en.wikipedia.org/wiki/Hugo_Award\" title=\"Hugo Award\">Hugo Award</a>&nbsp;in the genres of science fiction and fantasy. Its four sequels&mdash;<em><a href=\"https://en.wikipedia.org/wiki/Speaker_for_the_Dead\" title=\"Speaker for the Dead\">Speaker for the Dead</a></em> (1986), <em><a href=\"https://en.wikipedia.org/wiki/Xenocide\" title=\"Xenocide\">Xenocide</a></em> (1991), <em><a href=\"https://en.wikipedia.org/wiki/Children_of_the_Mind\" title=\"Children of the Mind\">Children of the Mind</a></em> (1996)<em>,</em> and <em><a href=\"https://en.wikipedia.org/wiki/Ender_in_Exile\" title=\"Ender in Exile\">Ender in Exile</a></em> (2008)<em>&mdash;</em>follow Ender&#39;s subsequent travels to many different worlds in the galaxy. In addition, the later novella <em><a class=\"mw-redirect\" href=\"https://en.wikipedia.org/wiki/A_War_of_Gifts\" title=\"A War of Gifts\">A War of Gifts</a></em> (2007) and novel <em><a href=\"https://en.wikipedia.org/wiki/Ender%27s_Shadow\" title=\"Ender's Shadow\">Ender&#39;s Shadow</a></em> (1999), plus other novels in the <em>Shadow</em> saga, take place during the same time period as the original.</p>\r\n\r\n<p>A <a href=\"https://en.wikipedia.org/wiki/Ender%27s_Game_(film)\" title=\"Ender's Game (film)\">film adaptation of the same name</a>, written for the screen and directed by <a href=\"https://en.wikipedia.org/wiki/Gavin_Hood\" title=\"Gavin Hood\">Gavin Hood</a>, and starring <a href=\"https://en.wikipedia.org/wiki/Asa_Butterfield\" title=\"Asa Butterfield\">Asa Butterfield</a> as Ender, was released in October 2013. Card co-produced the film.&nbsp;The novel has also been adapted into <a class=\"mw-redirect\" href=\"https://en.wikipedia.org/wiki/Ender%27s_Game_(series)#Comic_books_in_the_series\" title=\"Ender's Game (series)\">two comic book series</a>.</p>",
+    "master": 2
+  }
+},
+{
+  "model": "books.booktranslation",
+  "pk": 6,
+  "fields": {
+    "language_code": "ru",
+    "name": "Игра Эндера",
+    "description": "<p><strong>&laquo;Игра Эндера&raquo;</strong> (<a href=\"https://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%B3%D0%BB%D0%B8%D0%B9%D1%81%D0%BA%D0%B8%D0%B9_%D1%8F%D0%B7%D1%8B%D0%BA\" title=\"Английский язык\">англ.</a>&nbsp;<em>Ender&rsquo;s Game</em>, 1985)&nbsp;&mdash; научно-фантастический роман <a href=\"https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D1%80%D0%B4,_%D0%9E%D1%80%D1%81%D0%BE%D0%BD_%D0%A1%D0%BA%D0%BE%D1%82%D1%82\" title=\"Кард, Орсон Скотт\">Орсона Скотта Карда</a>. Роман является переработкой рассказа &laquo;Игра Эндера&raquo;, созданного в 1977&nbsp;году.</p>\r\n\r\n<p>Действие романа происходит в 2135&nbsp;году. Человечество пережило два вторжения инопланетной расы &laquo;жукеров&raquo; (<a href=\"https://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%B3%D0%BB%D0%B8%D0%B9%D1%81%D0%BA%D0%B8%D0%B9_%D1%8F%D0%B7%D1%8B%D0%BA\" title=\"Английский язык\">англ.</a>&nbsp;<em>buggers</em><a href=\"https://ru.wikipedia.org/wiki/%D0%98%D0%B3%D1%80%D0%B0_%D0%AD%D0%BD%D0%B4%D0%B5%D1%80%D0%B0#cite_note-2\">[a]</a>), лишь чудом уцелев, и готовится к очередному вторжению. Для поиска пилотов и военачальников, способных принести Земле победу, создаётся военная школа, в которую отправляют самых талантливых детей с раннего возраста. Среди этих детей и главный герой книги&nbsp;&mdash; <a href=\"https://ru.wikipedia.org/wiki/%D0%AD%D0%BD%D0%B4%D0%B5%D1%80_%D0%92%D0%B8%D0%B3%D0%B3%D0%B8%D0%BD\" title=\"Эндер Виггин\">Эндрю (Эндер) Виггин</a>, будущий полководец Международного флота Земли и единственная надежда человечества на спасение.</p>",
+    "master": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 1,
+  "fields": {
+    "created_at": "2026-02-05T10:18:23.886Z",
+    "updated_at": "2026-02-16T08:06:18.643Z",
+    "file": "",
+    "image": "books/images/sherlock_holmes_VmuQTsp.jpeg",
+    "price": 300,
+    "in_stock": 4,
+    "slug": "the-adventures-of-sherlock-holmes",
+    "is_active": true,
+    "is_adult": false,
+    "category": [
+      2
+    ],
+    "author": [
+      1
+    ]
+  }
+},
+{
+  "model": "books.book",
+  "pk": 2,
+  "fields": {
+    "created_at": "2026-02-05T10:21:20.437Z",
+    "updated_at": "2026-02-16T06:44:52.820Z",
+    "file": "",
+    "image": "books/images/enders-game_ayEHOKX.jpg",
+    "price": 150,
+    "in_stock": 1,
+    "slug": "enders-game",
+    "is_active": true,
+    "is_adult": false,
+    "category": [
+      1
+    ],
+    "author": [
+      2
+    ]
+  }
+},
+{
+  "model": "authors.authortranslation",
+  "pk": 1,
+  "fields": {
+    "language_code": "tk",
+    "name": "Arthur Conan Doyle",
+    "master": 1
+  }
+},
+{
+  "model": "authors.authortranslation",
+  "pk": 2,
+  "fields": {
+    "language_code": "ru",
+    "name": "Артур Конан Дойл",
+    "master": 1
+  }
+},
+{
+  "model": "authors.authortranslation",
+  "pk": 3,
+  "fields": {
+    "language_code": "en",
+    "name": "Arthur Conan Doyle",
+    "master": 1
+  }
+},
+{
+  "model": "authors.authortranslation",
+  "pk": 4,
+  "fields": {
+    "language_code": "en",
+    "name": "Orson Scott Card",
+    "master": 2
+  }
+},
+{
+  "model": "authors.authortranslation",
+  "pk": 5,
+  "fields": {
+    "language_code": "ru",
+    "name": "Орсон Скотт Кард",
+    "master": 2
+  }
+},
+{
+  "model": "authors.authortranslation",
+  "pk": 6,
+  "fields": {
+    "language_code": "tk",
+    "name": "Orson Skot Kard",
+    "master": 2
+  }
+},
+{
+  "model": "authors.author",
+  "pk": 1,
+  "fields": {
+    "created_at": "2026-02-05T09:49:36.865Z",
+    "updated_at": "2026-02-05T09:49:53.189Z",
+    "image": "authors/arthur_conan_doyle_XsahPqi.jpg",
+    "slug": "arthur-conan-doyle",
+    "is_active": true
+  }
+},
+{
+  "model": "authors.author",
+  "pk": 2,
+  "fields": {
+    "created_at": "2026-02-05T09:50:15.905Z",
+    "updated_at": "2026-02-05T09:50:30.879Z",
+    "image": "authors/Orson_Scott_ZotFhwL.jpg",
+    "slug": "orson-skot-kard",
+    "is_active": true
+  }
+},
+{
+  "model": "company.companytranslation",
+  "pk": 1,
+  "fields": {
+    "language_code": "tk",
+    "name": "\"BookStore\" kitap merkezi",
+    "master": 1
+  }
+},
+{
+  "model": "company.companytranslation",
+  "pk": 2,
+  "fields": {
+    "language_code": "ru",
+    "name": "\"BookStore\" книжный магазин",
+    "master": 1
+  }
+},
+{
+  "model": "company.companytranslation",
+  "pk": 3,
+  "fields": {
+    "language_code": "en",
+    "name": "\"BookStore\" book store",
+    "master": 1
+  }
+},
+{
+  "model": "company.company",
+  "pk": 1,
+  "fields": {
+    "logo": "company/logo/bookstore_logo.jpg"
+  }
+},
+{
+  "model": "company.aboutcompanytranslation",
+  "pk": 1,
+  "fields": {
+    "language_code": "tk",
+    "title": "Интернет-магазин BookStore",
+    "content": "<p>BookStore &mdash; d&uuml;rli g&ouml;rn&uuml;şli kitaplary satyn almak &uuml;&ccedil;in d&ouml;redilen h&auml;zirki zaman onla&yacute;n d&uuml;kandyr.<br />\r\nBiz Aşgabat ş&auml;herinde &yacute;erleş&yacute;&auml;ris we T&uuml;rkmenistanyň d&uuml;rli k&uuml;njeklerinden m&uuml;şderilere hyzmat ed&yacute;&auml;ris.</p>\r\n\r\n<p>Biziň maksadymyz &mdash; &yacute;okary hilli edebi&yacute;atlary &yacute;aşa&yacute;an &yacute;erine garamazdan hemmeler &uuml;&ccedil;in el&yacute;eterli etmekdir.<br />\r\nBookStore katalogynda meşhur awtorlaryň we neşir&yacute;atlaryň &ccedil;eper, bilim we h&uuml;n&auml;r kitaplary h&ouml;d&uuml;rlen&yacute;&auml;r.</p>\r\n\r\n<p>Biz assortimentimizi yzygiderli t&auml;zel&auml;p dur&yacute;arys, mazmunyň hiline g&ouml;zeg&ccedil;ilik ed&yacute;&auml;ris we amatly hem-de ygtybarly satyn alyş tejribesini &uuml;pj&uuml;n etm&auml;ge &ccedil;alyş&yacute;arys.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>",
+    "master": 1
+  }
+},
+{
+  "model": "company.aboutcompanytranslation",
+  "pk": 2,
+  "fields": {
+    "language_code": "en",
+    "title": "About BookStore",
+    "content": "<p>BookStore is an online platform for purchasing books across a wide range of genres and categories.<br />\r\nWe are based in Ashgabat and serve customers in Turkmenistan.</p>\r\n\r\n<p>Our mission is to make high-quality literature accessible to everyone, regardless of location.<br />\r\nThe BookStore catalog includes fiction, educational, and professional books from well-known authors and publishers.</p>\r\n\r\n<p>We continuously update our collection, maintain content quality, and strive to provide a convenient and secure shopping experience.</p>\r\n\r\n<p>&nbsp;</p>",
+    "master": 1
+  }
+},
+{
+  "model": "company.aboutcompany",
+  "pk": 1,
+  "fields": {
+    "image": ""
+  }
+},
+{
+  "model": "company.socialmedia",
+  "pk": 1,
+  "fields": {
+    "icon": "company/socials/instagram.png",
+    "link": "https://google.com"
+  }
+},
+{
+  "model": "company.contactdetail",
+  "pk": 1,
+  "fields": {
+    "phone": "+99365123456",
+    "email": "bookstore@bookstore.gmail.com",
+    "social_media": [
+      1
+    ]
+  }
+},
+{
+  "model": "users.profile",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "biography": "Main User (admin)",
+    "avatar": "profile/26/02/05/cat_avatar_9XeinhU.jpeg"
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$vl4fvMZCLFLrNmUKFbLDdS$hT4Hc9/8XWPmpEhPEG/LtrP/wFEN1by16wk2PoXEl5c=",
+    "last_login": "2026-02-23T05:21:33.393Z",
+    "is_superuser": true,
+    "email": "admin@admin.com",
+    "first_name": "admin",
+    "last_name": "admin",
+    "nickname": "admin",
+    "age": 28,
+    "is_active": true,
+    "is_staff": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$t0leVljgdrNAl6jB08YSmb$RRON5ItGrZjkTfbbiBta/3AFHYU1yp8RfOoF/eDEKU4=",
+    "last_login": null,
+    "is_superuser": false,
+    "email": "durdyyevatageldi03@gmail.com",
+    "first_name": "Atageldi",
+    "last_name": "Durdyyev",
+    "nickname": "Strix",
+    "age": 22,
+    "is_active": true,
+    "is_staff": false,
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

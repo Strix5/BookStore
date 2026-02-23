@@ -174,7 +174,7 @@ PARLER_LANGUAGES = {
     },
 }
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "en"
 
 TIME_ZONE = "Asia/Ashgabat"
 
