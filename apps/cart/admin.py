@@ -1,1 +1,1 @@
-from apps.cart.infrastructure.admin import CartAdmin, CartItemAdmin, FavoriteAdmin
+from apps.cart.infrastructure.admin import CartAdmin, CartItemAdmin

@@ -26,10 +26,11 @@ from drf_spectacular.views import (SpectacularAPIView, SpectacularRedocView,
 urlpatterns = [
     path("admin-panel/", admin.site.urls),
     path("api/books/", include("apps.books.api.urls")),
-    path("api/users/", include("apps.users.api.urls")),
-    path("api/company/", include("apps.company.api.urls")),
     path("api/cart/", include("apps.cart.api.urls")),
+    path("api/company/", include("apps.company.api.urls")),
     path("api/orders/", include("apps.orders.api.urls")),
+    path("api/recommendations/", include("apps.recommendations.api.urls")),
+    path("api/users/", include("apps.users.api.urls")),
     path("api/documentations/schema/", SpectacularAPIView.as_view(), name="schema"),
     path(
         "api/documentations/swagger/",

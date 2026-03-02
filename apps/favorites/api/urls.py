@@ -1,9 +1,9 @@
 from django.urls import path, include
 
-from apps.cart.api.routers import router
+from apps.favorites.api.routers import router
 
 
-app_name = 'cart'
+app_name = 'favorites'
 
 urlpatterns = [
     path('', include(router.urls)),

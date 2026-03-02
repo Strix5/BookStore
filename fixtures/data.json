@@ -332,50 +332,5 @@
       1
     ]
   }
-},
-{
-  "model": "users.profile",
-  "pk": 1,
-  "fields": {
-    "user": 1,
-    "biography": "Main User (admin)",
-    "avatar": "profile/26/02/05/cat_avatar_9XeinhU.jpeg"
-  }
-},
-{
-  "model": "users.customuser",
-  "pk": 1,
-  "fields": {
-    "password": "pbkdf2_sha256$1200000$vl4fvMZCLFLrNmUKFbLDdS$hT4Hc9/8XWPmpEhPEG/LtrP/wFEN1by16wk2PoXEl5c=",
-    "last_login": "2026-02-23T05:21:33.393Z",
-    "is_superuser": true,
-    "email": "admin@admin.com",
-    "first_name": "admin",
-    "last_name": "admin",
-    "nickname": "admin",
-    "age": 28,
-    "is_active": true,
-    "is_staff": true,
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "users.customuser",
-  "pk": 6,
-  "fields": {
-    "password": "pbkdf2_sha256$1200000$t0leVljgdrNAl6jB08YSmb$RRON5ItGrZjkTfbbiBta/3AFHYU1yp8RfOoF/eDEKU4=",
-    "last_login": null,
-    "is_superuser": false,
-    "email": "durdyyevatageldi03@gmail.com",
-    "first_name": "Atageldi",
-    "last_name": "Durdyyev",
-    "nickname": "Strix",
-    "age": 22,
-    "is_active": true,
-    "is_staff": false,
-    "groups": [],
-    "user_permissions": []
-  }
 }
 ]

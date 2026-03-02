@@ -13,18 +13,6 @@ from apps.orders.infrastructure.selectors import get_user_orders, get_user_order
 
 
 class OrderViewSet(viewsets.GenericViewSet):
-    """
-    ViewSet для управления заказами.
-
-    Эндпоинты:
-    - GET  /orders/         — список заказов текущего пользователя
-    - GET  /orders/{id}/    — детальный просмотр заказа
-    - POST /orders/purchase/ — покупка текущей корзины
-
-    Наследуем GenericViewSet (а не ModelViewSet), потому что
-    не нужны стандартные create/update/destroy — только кастомная логика.
-    """
-
     serializer_class = OrderSerializer
     permission_classes = [IsAuthenticated]
     pagination_class = CustomOrdersPagination
@@ -33,12 +21,6 @@ class OrderViewSet(viewsets.GenericViewSet):
         return get_user_orders(user_id=self.request.user.pk)
 
     def list(self, request: Request) -> Response:
-        """
-        GET /orders/ — список заказов с пагинацией.
-
-        Структура пагинации идентична BookViewSet:
-        get_queryset → paginate_queryset → get_paginated_response.
-        """
         queryset = self.get_queryset()
         page = self.paginate_queryset(queryset)
 
@@ -46,11 +28,6 @@ class OrderViewSet(viewsets.GenericViewSet):
         return self.get_paginated_response(serializer.data)
 
     def retrieve(self, request: Request, pk: int = None) -> Response:
-        """
-        GET /orders/{id}/ — детальный просмотр одного заказа.
-
-        Используем selector, проверяем что заказ принадлежит пользователю.
-        """
         order = self._get_order_or_404(order_id=pk)
         serializer = self.get_serializer(order)
 
@@ -58,20 +35,8 @@ class OrderViewSet(viewsets.GenericViewSet):
 
     @action(detail=False, methods=["post"], url_path="purchase", url_name="purchase")
     def purchase(self, request: Request) -> Response:
-        """
-        POST /orders/purchase/ — покупка всех товаров из корзины.
-
-        View делегирует всю логику в OrderRepository.create_order_from_cart():
-        - Валидация корзины
-        - Создание Order + OrderItems
-        - Деактивация корзины
-
-        View только получает cart и передаёт в repository.
-        Это делает view тонким — он не принимает бизнес-решений.
-        """
         cart = get_cart_with_items(user=request.user)
 
-        # Repository сам валидирует и бросит ValidationError если корзина пуста
         order = OrderRepository().create_order_from_cart(
             user=request.user,
             cart=cart,
@@ -79,13 +44,6 @@ class OrderViewSet(viewsets.GenericViewSet):
 
         serializer = self.get_serializer(order)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-    # ──────────────────────────────────────────────────────────────
-    # Приватные вспомогательные методы.
-    #
-    # По образцу UserProfileViewSet._get_current_user_profile() —
-    # каждый метод делает одно конкретное дело, имя говорит само за себя.
-    # ──────────────────────────────────────────────────────────────
 
     def _get_order_or_404(self, *, order_id: int):
         """

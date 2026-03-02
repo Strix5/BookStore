@@ -1,6 +1,6 @@
 from django.contrib.postgres.search import TrigramSimilarity
 from django.db import models
-from django.db.models import Count
+from django.db.models import Count, Max
 
 from apps.books.infrastructure.models import Book, BookCategory
 
@@ -36,17 +36,12 @@ def search_books(*, query: str | None):
 
     if query:
         qs = qs.annotate(
-            name_similarity=TrigramSimilarity('translations__name', query),
-
-            desc_similarity=TrigramSimilarity('translations__description', query) * 0.5,
-
-            author_similarity=TrigramSimilarity('author__translations__name', query) * 0.7,
+            name_similarity=Max(TrigramSimilarity('translations__name', query)),
+            author_similarity=Max(TrigramSimilarity('author__translations__name', query) * 0.7),
         ).annotate(
             total_similarity=models.F('name_similarity') +
-                             models.F('desc_similarity') +
                              models.F('author_similarity')
         ).filter(
-            total_similarity__gt=0.3
+            total_similarity__gt=0.2
         ).order_by('-total_similarity')
-
     return qs.distinct()

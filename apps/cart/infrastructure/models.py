@@ -62,28 +62,3 @@ class CartItem(AbstractDateTimeModel):
     @property
     def subtotal(self) -> float:
         return self.book.price * self.quantity
-
-
-class Favorite(AbstractDateTimeModel):
-    user = models.ForeignKey(
-        to=settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        related_name="favorites",
-    )
-    book = models.ForeignKey(
-        to=Book,
-        on_delete=models.CASCADE,
-        related_name="favorited_by",
-    )
-
-    class Meta:
-        verbose_name = _("Favorite")
-        verbose_name_plural = _("Favorites")
-        unique_together = [["user", "book"]]
-        indexes = [
-            models.Index(fields=["user", "book"]),
-        ]
-        ordering = ["-created_at"]
-
-    def __str__(self):
-        return f"{self.user.nickname} ♥ {self.book.name}"

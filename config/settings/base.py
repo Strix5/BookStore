@@ -50,12 +50,14 @@ INSTALLED_APPS = [
     "ckeditor",
     "parler",
     # project
-    "apps.books",
-    "apps.users",
     "apps.authors",
-    "apps.company",
+    "apps.books",
     "apps.cart",
+    "apps.company",
+    "apps.favorites",
     "apps.orders",
+    "apps.recommendations",
+    "apps.users",
 ]
 
 MIDDLEWARE = [

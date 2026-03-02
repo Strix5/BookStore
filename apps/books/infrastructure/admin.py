@@ -13,7 +13,7 @@ class BookAdmin(TranslatableAdmin):
     list_filter = ("created_at",)
     list_per_page = 20
     readonly_fields = ("image_preview", "slug", "updated_at", "created_at")
-    search_fields = ("translations__name", "slug")
+    search_fields = ("translations__name",)
     date_hierarchy = "created_at"
     ordering = ("-created_at",)
 

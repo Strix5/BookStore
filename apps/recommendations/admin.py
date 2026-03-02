@@ -1,0 +1,1 @@
+from apps.recommendations.infrastructure.admin import Recommendation, RecommendationBook
