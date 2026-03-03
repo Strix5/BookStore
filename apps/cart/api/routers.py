@@ -16,14 +16,5 @@ cart - базовый URL: /api/cart/
 - PATCH  /api/cart/update-quantity/{book_id}/ - update_quantity action
 - DELETE /api/cart/remove/{book_id}/          - remove action
 - DELETE /api/cart/clear/     - clear action
-
-favorites - базовый URL: /api/favorites/
-Автоматически создаются endpoints:
-- GET    /api/favorites/                  - list
-- POST   /api/favorites/add/              - add action
-- DELETE /api/favorites/remove/{book_id}/ - remove action
-- POST   /api/favorites/toggle/           - toggle action
-- DELETE /api/favorites/clear/            - clear action
-- GET    /api/favorites/check/{book_id}/  - check action
 """
 router.register(r'cart', CartViewSet, basename='cart')
