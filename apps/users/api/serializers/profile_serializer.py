@@ -3,6 +3,7 @@ from rest_framework import serializers
 
 from apps.users.infrastructure.models import Profile
 from apps.users.interface.services import ProfileService
+from commons.interfaces.urlfile_path import FileResponseField
 
 User = get_user_model()
 
@@ -17,6 +18,7 @@ class UserPublicSerializer(serializers.ModelSerializer):
 
 class ProfileSerializer(serializers.ModelSerializer):
     user = UserPublicSerializer(read_only=True)
+    avatar = FileResponseField()
 
     class Meta:
         model = Profile

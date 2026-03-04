@@ -1,11 +1,13 @@
 from rest_framework import serializers
 
 from apps.books.infrastructure.models import Book, BookCategory
+from commons.interfaces.urlfile_path import FileResponseField
 
 
 class BookListSerializer(serializers.ModelSerializer):
     name = serializers.CharField()
     description = serializers.SerializerMethodField()
+    image = FileResponseField()
     authors = serializers.SlugRelatedField(
         many=True,
         read_only=True,
@@ -47,6 +49,7 @@ class BookListSerializer(serializers.ModelSerializer):
 class BookDetailSerializer(serializers.ModelSerializer):
     name = serializers.CharField()
     description = serializers.CharField()
+    image = FileResponseField()
     authors = serializers.SlugRelatedField(
         many=True,
         read_only=True,

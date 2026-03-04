@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from apps.recommendations.infrastructure.models import Recommendation, RecommendationBook
+from commons.interfaces.urlfile_path import FileResponseField
 
 
 class RecommendationBookSerializer(serializers.ModelSerializer):
@@ -26,7 +27,7 @@ class RecommendationBookSerializer(serializers.ModelSerializer):
 
 class RecommendationListSerializer(serializers.ModelSerializer):
     title = serializers.CharField()
-    image = serializers.ImageField()
+    image = FileResponseField()
 
     class Meta:
         model = Recommendation
@@ -43,7 +44,7 @@ class RecommendationListSerializer(serializers.ModelSerializer):
 class RecommendationDetailSerializer(serializers.ModelSerializer):
     title = serializers.CharField()
     description = serializers.CharField()
-    image = serializers.ImageField()
+    image = FileResponseField()
 
     books = RecommendationBookSerializer(
         source="recommendation_books",

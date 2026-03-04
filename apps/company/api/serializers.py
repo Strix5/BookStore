@@ -2,10 +2,12 @@ from rest_framework import serializers
 
 from apps.company.infrastructure.models import (AboutCompany, Company,
                                                 ContactDetail, SocialMedia)
+from commons.interfaces.urlfile_path import FileResponseField
 
 
 class CompanySerializer(serializers.ModelSerializer):
     name = serializers.CharField()
+    logo = FileResponseField()
 
     class Meta:
         model = Company
@@ -15,6 +17,7 @@ class CompanySerializer(serializers.ModelSerializer):
 class AboutCompanySerializer(serializers.ModelSerializer):
     title = serializers.CharField()
     content = serializers.CharField()
+    image = FileResponseField()
 
     class Meta:
         model = AboutCompany
@@ -22,6 +25,7 @@ class AboutCompanySerializer(serializers.ModelSerializer):
 
 
 class SocialMediaSerializer(serializers.ModelSerializer):
+    icon = FileResponseField()
 
     class Meta:
         model = SocialMedia
