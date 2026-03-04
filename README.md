@@ -100,6 +100,6 @@ Jazzmin предоставляет улучшенный интерфейс Djang
 ## 🌐 API Endpoints
 
 API документация доступна по адресам:
-- Swagger UI: `/api/docs/swagger/`
-- ReDoc: `/api/docs/redoc/`
-- Schema: `/api/schema/`
+- Swagger UI: `/api/documentations/swagger/`
+- ReDoc: `/api/documentations/redoc/`
+- Schema: `/api/documentations/schema/`

@@ -19,7 +19,7 @@ class ServiceListSerializer(serializers.ModelSerializer):
         return ""
 
 
-class SerializerDetailSerializer(serializers.ModelSerializer):
+class ServiceDetailSerializer(serializers.ModelSerializer):
     name = serializers.CharField()
     description = serializers.CharField()
     image = FileResponseField()
@@ -33,3 +33,33 @@ class SerializerDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
         fields = ("id", "name", "description", "image", "order", "slug", "group_slug")
+
+
+class ServiceGroupListSerializer(serializers.ModelSerializer):
+    name = serializers.CharField()
+    description = serializers.SerializerMethodField()
+    image = FileResponseField()
+
+    class Meta:
+        model = ServiceGroup
+        fields = ("id", "slug", "name", "image", "order")
+
+    def get_description(self, obj):
+        if obj.description:
+            return obj.description[:100] + "..."
+        return ""
+
+
+class ServiceGroupDetailSerializer(serializers.ModelSerializer):
+    name = serializers.CharField()
+    description = serializers.CharField()
+    image = FileResponseField()
+
+    services = ServiceListSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = ServiceGroup
+        fields = (
+            "id", "slug", "name", "description",
+            "image", "order", "services",
+        )

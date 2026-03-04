@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     "apps.favorites",
     "apps.orders",
     "apps.recommendations",
+    "apps.services",
     "apps.users",
 ]
 
