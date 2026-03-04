@@ -50,6 +50,7 @@ class BookDetailSerializer(serializers.ModelSerializer):
     name = serializers.CharField()
     description = serializers.CharField()
     image = FileResponseField()
+    file = FileResponseField()
     authors = serializers.SlugRelatedField(
         many=True,
         read_only=True,
