@@ -1,7 +1,10 @@
 from django.contrib.auth import get_user_model
 from django.db import transaction
+from django.db.models import F
 from rest_framework.exceptions import ValidationError
 
+from apps.books.infrastructure import Book
+from apps.cart.infrastructure.models import Cart
 from apps.orders.infrastructure.models import Order, OrderItem
 
 User = get_user_model()
@@ -11,30 +14,20 @@ class OrderRepository:
 
     @transaction.atomic
     def create_order_from_cart(self, *, user: User, cart) -> Order:
-        """
-        Создаёт заказ из активной корзины пользователя.
-
-        Вся логика покупки инкапсулирована в одном методе:
-        1. Валидация корзины
-        2. Подсчёт итоговой суммы
-        3. Создание Order
-        4. Массовое создание OrderItem
-        5. Деактивация корзины
-
-        @transaction.atomic гарантирует: если любой шаг упадёт,
-        весь заказ откатится — нет риска получить пустой Order.
-
-        Args:
-            user: Аутентифицированный пользователь-покупатель
-            cart: ORM-объект Cart с prefetch_related("items__book")
-
-        Returns:
-            Созданный объект Order со всеми позициями
-
-        Raises:
-            ValidationError: если корзина пуста или не найдена
-        """
         self._validate_cart_not_empty(cart)
+
+        # Block books before working with them
+        book_ids = [item.book_id for item in cart.items.all()]
+        locked_books = {
+            b.id: b for b in Book.objects.select_for_update().filter(id__in=book_ids)
+        }
+
+        # Check in stock count (доп. проверка)
+        for item in cart.items.all():
+            book = locked_books[item.book_id]
+            if item.quantity > book.in_stock:
+                book_name = book.safe_translation_getter('name', any_language=True) or f"Book #{book.id}"
+                raise ValidationError({"detail": f"'{book_name}' has only {book.in_stock} copies left."})
 
         total_price = self._calculate_total(cart)
 
@@ -45,13 +38,14 @@ class OrderRepository:
         )
 
         self._create_order_items(order=order, cart=cart)
+        self._decrement_stock(cart=cart)
         self._deactivate_cart(cart=cart)
 
         return order
 
     @staticmethod
     def _validate_cart_not_empty(cart) -> None:
-        if cart is None or not cart.items.exists():
+        if cart is None or not cart.items.all():
             raise ValidationError({"detail": "Cart is empty or does not exist."})
 
     @staticmethod
@@ -74,4 +68,11 @@ class OrderRepository:
 
     @staticmethod
     def _deactivate_cart(*, cart) -> None:
-        cart.__class__.objects.filter(pk=cart.pk).update(is_active=False)
+        Cart.objects.filter(pk=cart.pk).update(is_active=False)
+
+    @staticmethod
+    def _decrement_stock(*, cart) -> None:
+        for item in cart.items.all():
+            Book.objects.filter(pk=item.book_id).update(
+                in_stock=F("in_stock") - item.quantity
+            )

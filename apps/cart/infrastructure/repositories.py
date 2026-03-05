@@ -59,22 +59,16 @@ class CartRepository:
 
         book_name = book.safe_translation_getter('name', any_language=True)
 
-        if book.in_stock < 1:
-            raise ValidationError(
-                f"'{book_name}' is out of stock."
-            )
-
         cart = get_or_create_cart(user)
         existing_item = get_cart_item(user, book_id)
 
         if existing_item:
-            total_requested = existing_item.quantity + quantity
-            if total_requested > book.in_stock:
+            if quantity > book.in_stock:
                 raise ValidationError(
                     f"Cannot add {quantity} more copies of '{book_name}'. "
                     f"In stock: {book.in_stock}, already in cart: {existing_item.quantity}."
                 )
-            existing_item.quantity = total_requested
+            existing_item.quantity = quantity
             existing_item.save(update_fields=['quantity', 'updated_at'])
             return existing_item
         else:
@@ -102,6 +96,9 @@ class CartRepository:
     @staticmethod
     @transaction.atomic
     def clear_cart(user: User) -> int:
-        cart = get_or_create_cart(user)
+        from apps.cart.infrastructure.models import Cart
+        cart = Cart.objects.filter(user=user, is_active=True).first()
+        if not cart:
+            return 0
         deleted_count, _ = cart.items.all().delete()
         return deleted_count
