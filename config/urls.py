@@ -28,8 +28,11 @@ urlpatterns = [
     path("api/books/", include("apps.books.api.urls")),
     path("api/cart/", include("apps.cart.api.urls")),
     path("api/company/", include("apps.company.api.urls")),
+    path("api/favorites/", include("apps.favorites.api.urls")),
+    path("api/galleries/", include("apps.galleries.api.urls")),
     path("api/orders/", include("apps.orders.api.urls")),
     path("api/recommendations/", include("apps.recommendations.api.urls")),
+    path("api/services/", include("apps.services.api.urls")),
     path("api/users/", include("apps.users.api.urls")),
     path("api/documentations/schema/", SpectacularAPIView.as_view(), name="schema"),
     path(
