@@ -3,7 +3,7 @@ from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 from parler.admin import TranslatableAdmin
 
-from apps.galleries.infrastructure.models import Gallery, GalleryItem
+from apps.gallery.infrastructure.models import Gallery, GalleryItem
 
 
 class GalleryItemInline(admin.TabularInline):
@@ -44,7 +44,7 @@ class GalleryAdmin(TranslatableAdmin):
             return format_html('<img src="{}" width="120" />', obj.cover.url)
         return _("No cover")
 
-    cover_preview.short_description = _("Main galleries cover preview")
+    cover_preview.short_description = _("Main gallery cover preview")
 
 
 @admin.register(GalleryItem)
@@ -95,7 +95,7 @@ class GalleryItemAdmin(admin.ModelAdmin):
 
     @admin.action(description=_("Retry HLS conversion for selected videos"))
     def retry_hls_conversion(self, request, queryset):
-        from apps.galleries.infrastructure.tasks import process_video_to_hls
+        from apps.gallery.infrastructure.tasks import process_video_to_hls
 
         video_items = queryset.filter(
             item_type=GalleryItem.ItemType.VIDEO,

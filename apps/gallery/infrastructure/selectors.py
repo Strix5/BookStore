@@ -1,6 +1,6 @@
 from django.db.models import Prefetch
 
-from apps.galleries.infrastructure.models import Gallery, GalleryItem
+from apps.gallery.infrastructure.models import Gallery, GalleryItem
 
 
 def get_active_galleries():

@@ -9,15 +9,10 @@
 - **Django Jazzmin** - современный интерфейс Django Admin
 - **JWT**
 - **DRF (Django REST Framework)**
+- **Celery**
+- **Redis**
 
-## 📋 Основные возможности
-
-- Многоязычная поддержка контента
-- API для взаимодействия с фронтендом
-- Административная панель с современным интерфейсом
-- Модульная структура приложения
-
-## 🛠️ Установка и запуск
+## Установка и запуск
 
 ### Предварительные требования
 
@@ -76,7 +71,24 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-## 🔧 Конфигурация
+10. Запуск Celery для локальной работы HLS у Gallery (нужен Redis):
+```bash
+celery -A config worker -l info
+```
+Пример запуска:
+```
+[tasks]
+  . apps.galleries.infrastructure.tasks.process_video_to_hls
+  . apps.users.interface.tasks.send_verification_email_task
+
+[2026-03-11 16:43:37,032: INFO/MainProcess] Connected to redis://127.0.0.1:6379/0
+[2026-03-11 16:43:37,039: INFO/MainProcess] mingle: searching for neighbors
+[2026-03-11 16:43:38,095: INFO/MainProcess] mingle: sync with 1 nodes
+[2026-03-11 16:43:38,095: INFO/MainProcess] mingle: sync complete
+[2026-03-11 16:43:38,118: INFO/MainProcess] celery@Linux ready.
+```
+
+## Конфигурация
 
 ### База данных
 

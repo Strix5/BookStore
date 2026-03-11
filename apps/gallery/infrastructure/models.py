@@ -11,7 +11,7 @@ class Gallery(TranslatableModel, AbstractDateTimeModel):
         description=models.TextField(blank=True, null=True),
     )
     cover = models.ImageField(
-        upload_to="galleries/covers/",
+        upload_to="gallery/covers/",
         max_length=255,
         blank=True,
         null=True,
@@ -55,7 +55,7 @@ class GalleryItem(AbstractDateTimeModel):
     )
 
     image = models.ImageField(
-        upload_to="galleries/images/",
+        upload_to="gallery/images/",
         max_length=255,
         blank=True,
         null=True,
@@ -63,7 +63,7 @@ class GalleryItem(AbstractDateTimeModel):
 
     # Видео: оригинал
     original_video = models.FileField(
-        upload_to="galleries/videos/originals/",
+        upload_to="gallery/videos/originals/",
         max_length=500,
         blank=True,
         null=True,
@@ -73,7 +73,7 @@ class GalleryItem(AbstractDateTimeModel):
     # Видео: HLS-результат
     # master.m3u8 ссылается на три плейлиста качеств (480p/720p/1080p).
     hls_master_playlist = models.FileField(
-        upload_to="galleries/videos/hls/",
+        upload_to="gallery/videos/hls/",
         max_length=500,
         blank=True,
         null=True,

@@ -6,4 +6,4 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.development")
 
 app = Celery("bookstore")
 app.config_from_object("django.conf:settings", namespace="CELERY")
-app.autodiscover_tasks(["apps.galleries.infrastructure",])  # auto find tasks.py in all Django apps
+app.autodiscover_tasks(["apps.gallery.infrastructure",])  # auto find tasks.py in all Django apps

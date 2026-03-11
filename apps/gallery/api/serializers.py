@@ -1,7 +1,7 @@
 from django.conf import settings
 from rest_framework import serializers
 
-from apps.galleries.infrastructure.models import Gallery, GalleryItem
+from apps.gallery.infrastructure.models import Gallery, GalleryItem
 from commons.interfaces.urlfile_path import FileResponseField
 
 
@@ -50,7 +50,7 @@ class GalleryItemSerializer(serializers.ModelSerializer):
     только когда item_type=video и hls_status=ready.
 
     Зачем image_url вместо image (ImageField напрямую):
-    ImageField по умолчанию возвращает относительный путь вида /media/galleries/images/...
+    ImageField по умолчанию возвращает относительный путь вида /media/gallery/images/...
     SerializerMethodField строит абсолютный URL через request.build_absolute_uri —
     клиент получает готовую ссылку без дополнительной обработки.
     """

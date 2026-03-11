@@ -1,7 +1,7 @@
 from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
 
-from apps.galleries.infrastructure.models import Gallery, GalleryItem
+from apps.gallery.infrastructure.models import Gallery, GalleryItem
 from commons.services.slug_generation import generate_slug
 from commons.signals.media import connect_media_cleanup
 
@@ -13,17 +13,20 @@ def gallery_slug_signal(sender, instance, **kwargs):
 
 @receiver(post_save, sender=GalleryItem)
 def gallery_item_video_signal(sender, instance: GalleryItem, created: bool, **kwargs):
+    print("SSSS")
     if instance.item_type != GalleryItem.ItemType.VIDEO:
         return
 
     if not instance.original_video:
         return
-
-    if not _video_changed(instance):
+    print("AAAA")
+    if _video_changed(instance):
         return
 
-    from apps.galleries.infrastructure.tasks import process_video_to_hls
+    from apps.gallery.infrastructure.tasks import process_video_to_hls
+    print("Hi")
     process_video_to_hls.delay(instance.pk)
+    print(instance.pk)
 
 
 def _video_changed(instance: GalleryItem) -> bool:

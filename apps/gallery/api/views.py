@@ -4,18 +4,18 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ReadOnlyModelViewSet
 from drf_spectacular.utils import extend_schema
 
-from apps.galleries.interface.paginations import CustomGalleryPagination
-from apps.galleries.api.serializers import (
+from apps.gallery.interface.paginations import CustomGalleryPagination
+from apps.gallery.api.serializers import (
     GalleryListSerializer,
     GalleryDetailSerializer,
     GalleryItemSerializer,
 )
-from apps.galleries.interface.api_schema import (
+from apps.gallery.interface.api_schema import (
     gallery_list_schema,
     gallery_retrieve_schema,
     gallery_items_schema,
 )
-from apps.galleries.infrastructure.selectors import (
+from apps.gallery.infrastructure.selectors import (
     get_active_galleries,
     get_active_gallery_by_slug,
     get_active_gallery_items_by_gallery_slug,
@@ -26,7 +26,7 @@ from apps.galleries.infrastructure.selectors import (
 class GalleryViewSet(ReadOnlyModelViewSet):
     pagination_class = CustomGalleryPagination
     lookup_field = "slug"
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         return get_active_galleries()

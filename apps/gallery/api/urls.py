@@ -1,6 +1,6 @@
 from django.urls import path, include
 
-from apps.galleries.api.routers import router
+from apps.gallery.api.routers import router
 
 
 urlpatterns = (
