@@ -88,6 +88,14 @@ celery -A config worker -l info
 [2026-03-11 16:43:38,118: INFO/MainProcess] celery@Linux ready.
 ```
 
+11. Установить ffmpeg:
+```bash
+sudo apt-get update && sudo apt-get install -y ffmpeg
+
+# Проверка — должна вернуть версию
+ffmpeg -version
+```
+
 ## Конфигурация
 
 ### База данных
