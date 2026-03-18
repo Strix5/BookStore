@@ -11,6 +11,7 @@
 - **DRF (Django REST Framework)**
 - **Celery**
 - **Redis**
+- **FFmpeg**
 
 ## Установка и запуск
 
