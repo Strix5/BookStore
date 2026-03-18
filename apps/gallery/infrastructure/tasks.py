@@ -8,17 +8,12 @@ from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
-# ── Настройки качеств ─────────────────────────────────────────────────────────
-# Каждое качество: (высота, битрейт видео, битрейт аудио, пропускная способность для master.m3u8)
-# BANDWIDTH в master.m3u8 — это пиковый битрейт потока в bps (видео + аудио).
 HLS_QUALITIES = [
     {"name": "480p",  "height": 480,  "video_bitrate": "1000k", "audio_bitrate": "96k",  "bandwidth": 1150000},
     {"name": "720p",  "height": 720,  "video_bitrate": "2500k", "audio_bitrate": "128k", "bandwidth": 2750000},
     {"name": "1080p", "height": 1080, "video_bitrate": "5000k", "audio_bitrate": "192k", "bandwidth": 5300000},
 ]
 
-# Длина одного HLS-сегмента в секундах.
-# 6 секунд — баланс между плавностью переключения качества и накладными расходами на сегменты.
 HLS_SEGMENT_DURATION = 6
 
 
@@ -117,8 +112,6 @@ def process_video_to_hls(self, gallery_item_id: int) -> None:
     5. Сохраняем путь к master.m3u8 в модели, ставим статус READY.
     При любой ошибке — статус FAILED + текст ошибки в hls_error.
     """
-    # Импорт внутри таска — стандартная практика Django/Celery:
-    # избегает circular imports между apps.gallery и tasks.
     from apps.gallery.infrastructure.models import GalleryItem
 
     logger.info("[HLS] Starting task %s for GalleryItem #%s", self.request.id, gallery_item_id)
@@ -133,7 +126,6 @@ def process_video_to_hls(self, gallery_item_id: int) -> None:
         logger.warning("[HLS] GalleryItem #%s has no original_video. Task aborted.", gallery_item_id)
         return
 
-    # Абсолютный путь к оригинальному файлу на диске
     input_path = os.path.join(settings.MEDIA_ROOT, item.original_video.name)
 
     if not os.path.isfile(input_path):
@@ -141,8 +133,6 @@ def process_video_to_hls(self, gallery_item_id: int) -> None:
         _mark_failed(item, f"Original file not found: {input_path}")
         return
 
-    # Директория для HLS-файлов этого конкретного item
-    # Структура: media/gallery/videos/hls/{item_id}/
     hls_output_dir = Path(settings.MEDIA_ROOT) / "gallery" / "videos" / "hls" / str(item.pk)
     hls_output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -156,7 +146,7 @@ def process_video_to_hls(self, gallery_item_id: int) -> None:
         cmd = _build_ffmpeg_command(input_path, hls_output_dir, quality)
 
         try:
-            result = subprocess.run(
+            subprocess.run(
                 cmd,
                 check=True,           # бросает CalledProcessError при ненулевом exit code
                 capture_output=True,  # перехватываем stdout/stderr ffmpeg
@@ -177,10 +167,8 @@ def process_video_to_hls(self, gallery_item_id: int) -> None:
             _mark_failed(item, f"Timeout on {quality['name']}")
             raise self.retry()
 
-    # Все качества готовы — пишем master playlist
     master_path = _write_master_playlist(hls_output_dir, produced_qualities)
 
-    # Сохраняем путь относительно MEDIA_ROOT (как Django хранит FileField)
     relative_master = master_path.relative_to(settings.MEDIA_ROOT)
 
     item.hls_master_playlist = str(relative_master)
@@ -190,10 +178,6 @@ def process_video_to_hls(self, gallery_item_id: int) -> None:
 
     logger.info("[HLS] GalleryItem #%s successfully processed. Master: %s", item.pk, relative_master)
 
-
-# ── Вспомогательные функции ───────────────────────────────────────────────────
-# Выносим update в функции, а не повторяем item.save(...) inline —
-# один вызов save с update_fields точечно обновляет только нужные столбцы.
 
 def _mark_processing(item) -> None:
     item.hls_status = item.HLSStatus.PROCESSING

@@ -13,20 +13,17 @@ def gallery_slug_signal(sender, instance, **kwargs):
 
 @receiver(post_save, sender=GalleryItem)
 def gallery_item_video_signal(sender, instance: GalleryItem, created: bool, **kwargs):
-    print("SSSS")
     if instance.item_type != GalleryItem.ItemType.VIDEO:
         return
 
     if not instance.original_video:
         return
-    print("AAAA")
     if _video_changed(instance):
         return
 
     from apps.gallery.infrastructure.tasks import process_video_to_hls
-    print("Hi")
     process_video_to_hls.delay(instance.pk)
-    print(instance.pk)
+    print(f"Object {instance.pk} - HLS done")
 
 
 def _video_changed(instance: GalleryItem) -> bool:

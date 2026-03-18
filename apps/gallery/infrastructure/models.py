@@ -61,7 +61,6 @@ class GalleryItem(AbstractDateTimeModel):
         null=True,
     )
 
-    # Видео: оригинал
     original_video = models.FileField(
         upload_to="gallery/videos/originals/",
         max_length=500,
@@ -70,8 +69,7 @@ class GalleryItem(AbstractDateTimeModel):
         help_text=_("Upload MP4/MOV/AVI. HLS will be generated automatically."),
     )
 
-    # Видео: HLS-результат
-    # master.m3u8 ссылается на три плейлиста качеств (480p/720p/1080p).
+    # master.m3u8 (480p/720p/1080p).
     hls_master_playlist = models.FileField(
         upload_to="gallery/videos/hls/",
         max_length=500,

@@ -78,11 +78,6 @@ class GalleryItemSerializer(serializers.ModelSerializer):
 
 
 class GalleryListSerializer(serializers.ModelSerializer):
-    """
-    Легкий сериализатор альбома для list-эндпоинта.
-    Только мета-данные — без items. Для карточек в ленте.
-    """
-
     name = serializers.CharField()
     cover = FileResponseField()
 
@@ -92,12 +87,6 @@ class GalleryListSerializer(serializers.ModelSerializer):
 
 
 class GalleryDetailSerializer(serializers.ModelSerializer):
-    """
-    Детальный сериализатор альбома — с описанием и вложенными items.
-    Prefetch в selector уже отфильтровал неактивные items,
-    поэтому items_data читается из prefetch-кэша без лишних запросов.
-    """
-
     name = serializers.CharField()
     description = serializers.CharField()
     cover = FileResponseField()
