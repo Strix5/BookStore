@@ -7,19 +7,6 @@ User = get_user_model()
 
 
 def get_user_favorites(user: User) -> QuerySet[Favorite]:
-    """
-    Получает все избранные книги пользователя.
-
-    Зачем prefetch:
-    - Загружаем книги вместе с переводами и категориями
-    - Один запрос вместо N+1
-
-    Args:
-        user: Пользователь
-
-    Returns:
-        QuerySet избранных книг
-    """
     return Favorite.objects.filter(
         user=user
     ).select_related(
@@ -32,20 +19,6 @@ def get_user_favorites(user: User) -> QuerySet[Favorite]:
 
 
 def get_favorite_books(user: User) -> QuerySet:
-    """
-    Получает QuerySet только книг из избранного.
-
-    Зачем:
-    - Удобно для отображения: не нужна промежуточная модель Favorite
-    - Можно применить фильтры Book (по категории, автору и т.д.)
-    - values_list для получения только ID (для проверок)
-
-    Args:
-        user: Пользователь
-
-    Returns:
-        QuerySet книг
-    """
     from apps.books.infrastructure.models import Book
 
     favorite_book_ids = Favorite.objects.filter(
