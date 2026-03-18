@@ -57,12 +57,12 @@ def search_books(*, query: str | None, user_age: int) -> QuerySet:
             name_similarity=Max(
                 TrigramSimilarity("translations__name", query)
             ),
-            author_similarity_raw=Max(
+            author_similarity=Max(
                 TrigramSimilarity("author__translations__name", query)
             ),
         )
         .annotate(
-            total_similarity=F("name_similarity") + F("author_similarity_raw") * 0.7
+            total_similarity=F("name_similarity") + F("author_similarity") * 0.7
         )
         .filter(total_similarity__gt=0.2)
         .order_by("-total_similarity")

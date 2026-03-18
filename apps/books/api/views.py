@@ -1,3 +1,4 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
 from rest_framework.exceptions import NotFound
 from rest_framework.permissions import IsAuthenticated
@@ -8,6 +9,7 @@ from apps.books.api.serializers import (BookCategorySerializer,
                                         BookListSerializer)
 from apps.books.infrastructure.selectors import (get_active_categories,
                                                  search_books, get_allowed_books_by_category)
+from apps.books.interface.filters import BookFilter, BookCategoryFilter
 from apps.books.interface.paginations import CustomBooksPagination
 
 
@@ -15,6 +17,8 @@ class BookViewSet(ReadOnlyModelViewSet):
     pagination_class = CustomBooksPagination
     lookup_field = "slug"
     permission_classes = [IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = BookFilter
 
     def get_queryset(self):
         user_age = getattr(self.request.user, "age", 0)
@@ -24,12 +28,24 @@ class BookViewSet(ReadOnlyModelViewSet):
     def get_serializer_class(self):
         return BookListSerializer if self.action == "list" else BookDetailSerializer
 
+    def get_object(self):
+        slug = self.kwargs[self.lookup_field]
+        obj = self.filter_queryset(self.get_queryset()).filter(slug=slug).first()
+
+        if obj is None:
+            raise NotFound()
+
+        self.check_object_permissions(self.request, obj)
+        return obj
+
 
 class BookCategoryViewSet(ReadOnlyModelViewSet):
     serializer_class = BookCategorySerializer
     lookup_field = "slug"
     pagination_class = CustomBooksPagination
     permission_classes = [IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = BookCategoryFilter
 
     def get_queryset(self):
         return get_active_categories()
