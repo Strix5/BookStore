@@ -16,7 +16,7 @@ from apps.books.interface.paginations import CustomBooksPagination
 class BookViewSet(ReadOnlyModelViewSet):
     pagination_class = CustomBooksPagination
     lookup_field = "slug"
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_class = BookFilter
 
@@ -43,7 +43,7 @@ class BookCategoryViewSet(ReadOnlyModelViewSet):
     serializer_class = BookCategorySerializer
     lookup_field = "slug"
     pagination_class = CustomBooksPagination
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_class = BookCategoryFilter
 

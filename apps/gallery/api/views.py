@@ -26,7 +26,7 @@ from apps.gallery.infrastructure.selectors import (
 class GalleryViewSet(ReadOnlyModelViewSet):
     pagination_class = CustomGalleryPagination
     lookup_field = "slug"
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         return get_active_galleries()

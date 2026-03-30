@@ -30,7 +30,7 @@ from apps.services.infrastructure.selectors import (
 class ServiceGroupViewSet(ReadOnlyModelViewSet):
     pagination_class = CustomServicePagination
     lookup_field = "slug"
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         return get_active_service_groups()
@@ -75,7 +75,7 @@ class ServiceGroupViewSet(ReadOnlyModelViewSet):
 class ServiceViewSet(ReadOnlyModelViewSet):
     pagination_class = CustomServicePagination
     lookup_field = "slug"
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         return get_active_services()
