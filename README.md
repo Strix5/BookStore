@@ -26,15 +26,13 @@
 1. Клонируйте репозиторий:
 ```bash
 git clone https://github.com/Strix5/BookStore.git
-cd bookstore
+cd BookStore
 ```
 
 2. Создайте виртуальное окружение:
 ```bash
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate  # для Linux/Mac
-# или
-venv\Scripts\activate  # для Windows
 ```
 
 3. Установите зависимости:
