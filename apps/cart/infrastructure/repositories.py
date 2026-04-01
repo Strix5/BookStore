@@ -2,7 +2,7 @@ from typing import Optional, Tuple
 
 from django.contrib.auth import get_user_model
 from django.db import transaction
-from django.core.exceptions import ValidationError
+from rest_framework.exceptions import ValidationError
 
 from apps.books.infrastructure.models import Book
 from apps.cart.infrastructure.models import CartItem

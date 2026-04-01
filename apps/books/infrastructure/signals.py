@@ -9,6 +9,11 @@ from commons.signals.media import connect_media_cleanup
 @receiver(pre_save, sender=BookCategory)
 @receiver(pre_save, sender=Book)
 def book_slug_signal(sender, instance, **kwargs):
+    title = instance.safe_translation_getter("name", any_language=True)
+
+    if not title:
+        return
+
     generate_slug(instance, sender, "name")
 
 
