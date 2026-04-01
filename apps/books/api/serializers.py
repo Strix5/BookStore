@@ -75,6 +75,7 @@ class BookDetailSerializer(serializers.ModelSerializer):
             "file",
             "image",
             "slug",
+            "in_stock",
             "is_adult",
             "authors",
             "categories",
